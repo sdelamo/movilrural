@@ -1,0 +1,17 @@
+*.iml
+*.ipr
+*.iws
+.idea
+
+.gradle
+.asscache
+build
+out
+logs
+classes
+
+Thumbs.db
+.DS_Store
+.project
+.settings
+.classpath

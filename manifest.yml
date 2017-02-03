@@ -1,0 +1,9 @@
+---
+applications:
+  - name: movilrural
+    memory: 1G
+    instances: 1
+    path: build/libs/movilrural-0.1.war
+    buildpack: java_buildpack
+    services:
+      - mysql
