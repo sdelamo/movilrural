@@ -78,6 +78,10 @@ cloudfoundry {
     instances = 1
     buildpack = "java_buildpack"
     services {
-        "mysql"
+        "mysql" {
+            label = "cleardb"
+            plan = "spark"
+            bind = true
+        }
     }
 }
