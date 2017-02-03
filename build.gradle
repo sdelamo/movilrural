@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenCentral()
         mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
     }
@@ -7,6 +8,7 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.11.6"
         classpath "org.grails.plugins:hibernate5:6.0.6"
+        classpath 'org.cloudfoundry:cf-gradle-plugin:1.1.2'
     }
 }
 
@@ -19,6 +21,7 @@ apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"org.grails.grails-gsp"
 apply plugin:"asset-pipeline"
+apply plugin: 'cloudfoundry'
 
 repositories {
     mavenLocal()
@@ -64,4 +67,17 @@ bootRun {
 assets {
     minifyJs = true
     minifyCss = true
+}
+
+cloudfoundry {
+    target = "https://api.run.pivotal.io"
+    organization = "softamo.com"
+    space = "development"
+    file = file("build/libs/movilrural-0.1.war")
+    memory = 1024
+    instances = 1
+    buildpack = "java_buildpack"
+    services {
+        "mysql"
+    }
 }
