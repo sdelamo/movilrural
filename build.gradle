@@ -13,19 +13,21 @@ buildscript {
 }
 
 version "0.1"
-group "movilrural"
+group "com.softamo"
 
-apply plugin:"eclipse"
-apply plugin:"idea"
-apply plugin:"war"
-apply plugin:"org.grails.grails-web"
-apply plugin:"org.grails.grails-gsp"
-apply plugin:"asset-pipeline"
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'org.grails.grails-web'
+apply plugin: 'org.grails.grails-gsp'
+apply plugin: 'asset-pipeline'
 apply plugin: 'cloudfoundry'
+apply plugin: 'codenarc'
 
 repositories {
+    jcenter()
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url 'http://dl.bintray.com/agorapulse/libs' }
 }
 
 dependencyManagement {
@@ -56,13 +58,14 @@ dependencies {
     testCompile "org.grails.plugins:geb"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
-
+    compile 'org.grails.plugins:grails-trix-editor:1.1'
+    compile 'org.grails.plugins:aws-sdk-s3:2.1.5'
+    compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
 }
 
 bootRun {
     jvmArgs('-Dspring.output.ansi.enabled=always')
 }
-
 
 assets {
     minifyJs = true
@@ -85,3 +88,31 @@ cloudfoundry {
         }
     }
 }
+
+
+bootRun {
+    systemProperties System.properties
+}
+
+integrationTest {
+    systemProperties System.properties
+}
+
+test {
+    systemProperties System.properties
+}
+
+codenarc {
+    toolVersion = '0.25.2'
+}
+
+codenarcMain {
+    ignoreFailures false
+    configFile file("${rootProject.projectDir}/config/codenarc/codenarc.groovy")
+}
+
+codenarcTest {
+    ignoreFailures false
+    configFile file("${rootProject.projectDir}/config/codenarc/codenarcTest.groovy")
+}
+

@@ -5,6 +5,7 @@ dataSources {
         username = uri.userInfo ? uri.userInfo.split(":")[0] : ""
         password = uri.userInfo ? uri.userInfo.split(":")[1] : ""
         url = "jdbc:mysql://" + uri.host + uri.path
+        dbCreate = "update"
         properties {
             jmxEnabled = true
             initialSize = 5
