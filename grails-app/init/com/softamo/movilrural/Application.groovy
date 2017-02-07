@@ -1,4 +1,4 @@
-package movilrural
+package com.softamo.movilrural
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

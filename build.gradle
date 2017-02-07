@@ -74,14 +74,15 @@ assets {
 
 cloudfoundry {
     target = "https://api.run.pivotal.io"
+    application = 'movilrural-prod'
     organization = "softamo.com"
-    space = "development"
+    space = "production"
     file = file("build/libs/movilrural-0.1.war")
     memory = 1024
     instances = 1
     buildpack = "java_buildpack"
     services {
-        "mysql" {
+        "movilruralmysql" {
             label = "cleardb"
             plan = "spark"
             bind = true

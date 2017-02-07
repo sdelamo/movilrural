@@ -21,7 +21,6 @@ class VillageController {
 
     VillageGormService villageGormService
 
-    @Transactional(readOnly = true)
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def (l, total) = villageGormService.list(params)
@@ -42,6 +41,11 @@ class VillageController {
 
     @Transactional(readOnly = true)
     def editFeaturedImage(Village village) {
+        respond village
+    }
+
+    @Transactional(readOnly = true)
+    def addImage(Village village) {
         respond village
     }
 
@@ -73,6 +77,35 @@ class VillageController {
                 flash.message = message(code: 'default.updated.message',
                                        args: [message(code: 'village.label',
                                                       default: 'Village'), village.id])
+                redirect village
+            }
+            '*' { respond village, [status: OK] }
+        }
+    }
+
+    def uploadImage(ImageCommand cmd) {
+
+        if (cmd.hasErrors()) {
+            respond(cmd.errors, model: [village: cmd], view: 'addImage')
+            return
+        }
+
+        def village = uploadVillageFeaturedImageService.uploadImage(cmd)
+        if (village == null) {
+            notFound()
+            return
+        }
+
+        if (village.hasErrors()) {
+            respond(village.errors, model: [village: village], view: 'addImage')
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'village.label',
+                                default: 'Village'), village.id])
                 redirect village
             }
             '*' { respond village, [status: OK] }
@@ -168,7 +201,47 @@ class VillageController {
             '*' { render status: NO_CONTENT }
         }
     }
-    // tag::delete[]
+
+
+    def deleteFeaturedImageUrl(DeleteFeaturedImageUrlCommand cmd) {
+        if ( !cmd ) {
+            notFound()
+            return
+        }
+
+        if (cmd.hasErrors()) {
+            respond cmd.errors, view: 'show'
+            return
+        }
+
+        Village village = villageGormService.deleteFeaturedImageUrl(cmd)
+        if ( village == null) {
+            notFound()
+            return
+        }
+
+        redirect(action: 'show', id: village.id)
+    }
+
+    def deleteImageUrl(DeleteImageUrlCommand cmd) {
+        if ( !cmd ) {
+            notFound()
+            return
+        }
+
+        if (cmd.hasErrors()) {
+            respond cmd.errors, view: 'show'
+            return
+        }
+
+        Village village = villageGormService.deleteImageUrl(cmd)
+        if ( village == null) {
+            notFound()
+            return
+        }
+
+        redirect(action: 'show', id: village.id)
+    }
 
     protected void notFound() {
         request.withFormat {

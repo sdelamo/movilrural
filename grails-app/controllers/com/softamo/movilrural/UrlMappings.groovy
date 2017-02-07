@@ -1,4 +1,4 @@
-package movilrural
+package com.softamo.movilrural
 
 class UrlMappings {
 

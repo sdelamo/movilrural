@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: movilrural
+        defaultPackage: com.softamo.movilrural
     spring:
         transactionManagement:
             proxies: false
@@ -84,10 +84,11 @@ endpoints:
 hibernate:
     cache:
         queries: false
-        use_second_level_cache: true
+        use_second_level_cache: false
         use_query_cache: false
         region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
 
+---
 dataSource:
     pooled: true
     jmxExport: true
@@ -99,7 +100,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:mysql://127.0.0.1:8889/movilrural_dev
             username: root
             password: root
@@ -109,3 +110,10 @@ environments:
             url: jdbc:mysql://127.0.0.1:8889/movilrural_test
             username: root
             password: root
+---
+grails:
+    plugins:
+        awssdk:
+            s3:
+                region: eu-west-1
+                bucket: movilruraldev

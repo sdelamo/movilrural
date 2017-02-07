@@ -31,4 +31,19 @@ class ConstraintsUtils {
         }
     }
 
+    static Closure imageFile() {
+        { val, obj ->
+            if ( val == null ) {
+                return false
+            }
+            if ( val.empty ) {
+                return false
+            }
+
+            ['jpeg', 'jpg', 'png'].any { extension ->
+                val.originalFilename?.toLowerCase()?.endsWith(extension)
+            }
+        }
+    }
+
 }

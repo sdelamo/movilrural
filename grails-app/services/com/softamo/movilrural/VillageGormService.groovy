@@ -11,6 +11,20 @@ class VillageGormService {
     }
 
     @Transactional
+    Village addImageUrl(Long id, Integer version, String imageUrl) {
+        Village village = Village.get(id)
+        if ( !village ) {
+            return null
+        }
+        if ( !village.featuredImageUrl ) {
+            return updateFeaturedImageUrl(id, version, imageUrl)
+        }
+        village.version = version
+        village.addToImageUrls(imageUrl)
+        village.save()
+    }
+
+    @Transactional
     Village updateFeaturedImageUrl(Long id, Integer version, String featuredImageUrl) {
         Village village = Village.get(id)
         if ( !village ) {
@@ -40,4 +54,33 @@ class VillageGormService {
         def village = Village.get(villageId)
         village?.delete()
     }
+
+    @Transactional
+    Village deleteFeaturedImageUrl(DeleteFeaturedImageUrlCommand cmd) {
+        Village village = Village.get(cmd.id)
+        if ( !village ) {
+            return null
+        }
+        village.version = cmd.version
+        village.featuredImageUrl = null
+        if ( village.imageUrls ) {
+            def imageUrl = village.imageUrls.first()
+            village.featuredImageUrl = imageUrl
+            village.removeFromImageUrls(imageUrl)
+
+        }
+        village.save()
+    }
+
+    @Transactional
+    Village deleteImageUrl(DeleteImageUrlCommand cmd) {
+        Village village = Village.get(cmd.id)
+        if ( !village ) {
+            return null
+        }
+        village.version = cmd.version
+        village.removeFromImageUrls(cmd.imageUrl)
+        village.save()
+    }
+
 }
