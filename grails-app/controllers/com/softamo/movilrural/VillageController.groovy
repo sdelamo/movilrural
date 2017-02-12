@@ -202,7 +202,6 @@ class VillageController {
         }
     }
 
-
     def deleteFeaturedImageUrl(DeleteFeaturedImageUrlCommand cmd) {
         if ( !cmd ) {
             notFound()
@@ -214,7 +213,7 @@ class VillageController {
             return
         }
 
-        Village village = villageGormService.deleteFeaturedImageUrl(cmd)
+        Village village = uploadVillageFeaturedImageService.deleteFeaturedImageUrl(cmd)
         if ( village == null) {
             notFound()
             return
@@ -234,7 +233,7 @@ class VillageController {
             return
         }
 
-        Village village = villageGormService.deleteImageUrl(cmd)
+        Village village = uploadVillageFeaturedImageService.deleteImageUrl(cmd)
         if ( village == null) {
             notFound()
             return
