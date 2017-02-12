@@ -36,8 +36,4 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
 }
 else {
     root(ERROR, ['STDOUT'])
-    logger 'grails.plugin.awssdk.s3', WARN, ['STDOUT'], false
-    logger 'grails.plugin.awssdk.s3', INFO, ['STDOUT'], false
-    logger 'grails.plugin.awssdk.s3', DEBUG, ['STDOUT'], false
-    logger 'grails.plugin.awssdk.s3', ERROR, ['STDOUT'], false
 }
