@@ -115,8 +115,8 @@ environments:
             password: root
 ---
 grails:
-    plugins:
-        awssdk:
-            s3:
-                region: eu-west-1
-                bucket: movilruraldev
+    plugin:
+      awssdk:
+          s3:
+            region: eu-west-1
+            bucket: movilruraldev

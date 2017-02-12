@@ -1,18 +1,11 @@
 grails {
-	plugins {
+	plugin {
 		awssdk {
 			s3 {
 				region = 'eu-west-1'
 				bucket = 'movilrural'
-				accessKey = System.getenv('AWS_ACCESS_KEY_ID')
-				accessKey = System.getenv('AWS_SECRET_KEY')
 			}
 		}
-	}
-}
-
-grails {
-	plugin {
 		springsecurity {
 			securityConfigType = "InterceptUrlMap"
 			filterChain {
