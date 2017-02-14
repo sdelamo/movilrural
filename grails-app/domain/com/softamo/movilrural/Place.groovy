@@ -8,6 +8,8 @@ class Address {
     String region
     String countryName
 
+    static belongsTo = [place: Place]
+
     static constraints = {
         streetAddress nullable: true
         locality nullable: true
@@ -25,6 +27,8 @@ class SocialNetwork {
     String googlePlus
     String minube
     String tuenti
+
+    static belongsTo = [place: Place]
 
     static constraints = {
         toprural nullable: true

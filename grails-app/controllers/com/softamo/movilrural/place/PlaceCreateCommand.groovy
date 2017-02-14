@@ -1,8 +1,6 @@
 package com.softamo.movilrural.place
 
-import com.softamo.movilrural.Address
 import com.softamo.movilrural.ConstraintsUtils
-import com.softamo.movilrural.SocialNetwork
 import grails.compiler.GrailsCompileStatic
 import grails.validation.Validateable
 
@@ -18,9 +16,6 @@ class PlaceCreateCommand implements Validateable {
     String officialRanking
     BigDecimal latitude
     BigDecimal longitude
-    String featuredImageUrl
-    Address address
-    SocialNetwork socialNetwork
 
     static constraints = {
         name nullable: false, blank: false
@@ -30,8 +25,6 @@ class PlaceCreateCommand implements Validateable {
         telephone nullable: true
         about nullable: true
         category nullable: true
-        address nullable: true
-        socialNetwork nullable: true
         officialRanking nullable: true
 
         latitude nullable: false, validator:

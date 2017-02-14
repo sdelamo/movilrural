@@ -1,5 +1,7 @@
 package com.softamo.movilrural
 
+import grails.util.Environment
+
 class BootStrap {
 
     final static List<String> VISITOR_AUTHORITIES = ['ROLE_VILLAGE_VISITOR',
@@ -26,17 +28,36 @@ class BootStrap {
 
     def init = { servletContext ->
         saveRoles()
+        saveAdminUser()
     }
 
     def destroy = {
     }
 
-    void saveRoles() {
+    void saveAdminUser() {
+        if ( Environment.DEVELOPMENT == Environment.current) {
+            if ( !User.findByUsername('admin') ) {
+                def user = new User('admin', 'admin')
+                user.save failOnError: true
+                allAuthorities().each { String authority ->
+                    def role = Role.findByAuthority(authority)
+                    def userRole = new UserRole(user, role)
+                    userRole.save failOnError: true
+                }
+            }
+        }
+    }
+
+    static List<String> allAuthorities() {
         def authorities = []
         authorities += VISITOR_AUTHORITIES
         authorities += EDITOR_AUTHORITIES
         authorities += MANAGER_AUTHORITIES
-        authorities.each { String authority ->
+        authorities
+    }
+
+    void saveRoles() {
+        allAuthorities().each { String authority ->
             if ( !Role.findByAuthority(authority) ) {
                 new Role(authority).save()
             }

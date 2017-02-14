@@ -60,6 +60,53 @@ class PoiControllerAllowedMethodsSpec extends Specification {
     }
 
     @Unroll
+    def "test PoiController.editAddress does not accept #method requests"(String method) {
+        when:
+        request.method = method
+        controller.editAddress()
+
+        then:
+        response.status == SC_METHOD_NOT_ALLOWED
+
+        where:
+        method << ['PATCH', 'DELETE', 'POST', 'PUT']
+    }
+
+    def "test PoiController.editAddress accepts GET requests"() {
+        when:
+        controller.poiGormService = Mock(PoiGormService)
+        request.method = 'GET'
+        controller.editAddress()
+
+        then:
+        response.status == SC_NOT_FOUND
+    }
+
+    @Unroll
+    def "test PoiController.editSocialNetwork does not accept #method requests"(String method) {
+        when:
+        controller.poiGormService = Mock(PoiGormService)
+        request.method = method
+        controller.editSocialNetwork()
+
+        then:
+        response.status == SC_METHOD_NOT_ALLOWED
+
+        where:
+        method << ['PATCH', 'DELETE', 'POST', 'PUT']
+    }
+
+    def "test PoiController.editSocialNetwork accepts GET requests"() {
+        when:
+        controller.poiGormService = Mock(PoiGormService)
+        request.method = 'GET'
+        controller.editSocialNetwork()
+
+        then:
+        response.status == SC_NOT_FOUND
+    }
+
+    @Unroll
     def "test PoiController.edit does not accept #method requests"(String method) {
         when:
         request.method = method

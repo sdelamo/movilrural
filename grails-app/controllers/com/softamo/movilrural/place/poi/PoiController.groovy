@@ -26,6 +26,8 @@ class PoiController {
                              show: 'GET',
                              create: 'GET',
                              editFeaturedImage: 'GET',
+                             editAddress: 'GET',
+                             editSocialNetwork: 'GET',
                              edit: 'GET',
                              uploadFeaturedImage: 'POST',
                              save: 'POST',
@@ -53,6 +55,14 @@ class PoiController {
     }
 
     def editFeaturedImage(RetrieveGormEntityCommand cmd) {
+        respond poiGormService.findById(cmd)
+    }
+
+    def editAddress(RetrieveGormEntityCommand cmd) {
+        respond poiGormService.findById(cmd)
+    }
+
+    def editSocialNetwork(RetrieveGormEntityCommand cmd) {
         respond poiGormService.findById(cmd)
     }
 
