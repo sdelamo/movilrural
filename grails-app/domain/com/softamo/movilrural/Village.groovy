@@ -1,5 +1,8 @@
 package com.softamo.movilrural
 
+import grails.compiler.GrailsCompileStatic
+
+@GrailsCompileStatic
 class Village {
   String name
   String about

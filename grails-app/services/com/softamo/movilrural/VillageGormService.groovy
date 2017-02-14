@@ -1,9 +1,24 @@
 package com.softamo.movilrural
 
+import com.softamo.movilrural.village.VillageCreateCommand
+import com.softamo.movilrural.village.VillageUpdateCommand
+import grails.compiler.GrailsCompileStatic
 import grails.transaction.Transactional
 
-@Transactional
+@GrailsCompileStatic
 class VillageGormService {
+
+    @SuppressWarnings('GrailsMassAssignment')
+    @SuppressWarnings('FactoryMethodName')
+    @Transactional(readOnly = true)
+    Village createVillage(Map params) {
+        new Village(params)
+    }
+
+    @Transactional(readOnly = true)
+    Village findById(RetrieveGormEntityCommand cmd) {
+        Village.get(cmd?.id)
+    }
 
     @Transactional(readOnly = true)
     List list(Map params) {
@@ -11,7 +26,7 @@ class VillageGormService {
     }
 
     @Transactional
-    Village addImageUrl(Long id, Integer version, String imageUrl) {
+    Village addImageUrl(Long id, Long version, String imageUrl) {
         Village village = Village.get(id)
         if ( !village ) {
             return null
@@ -25,7 +40,7 @@ class VillageGormService {
     }
 
     @Transactional
-    Village updateFeaturedImageUrl(Long id, Integer version, String featuredImageUrl) {
+    Village updateFeaturedImageUrl(Long id, Long version, String featuredImageUrl) {
         Village village = Village.get(id)
         if ( !village ) {
             return null

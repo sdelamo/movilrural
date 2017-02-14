@@ -1,18 +1,15 @@
-package com.softamo.movilrural
+package com.softamo.movilrural.place
 
 import grails.compiler.GrailsCompileStatic
 import grails.validation.Validateable
-import org.springframework.web.multipart.MultipartFile
 
 @GrailsCompileStatic
-class ImageCommand implements Validateable {
-    MultipartFile imageFile
+class PlaceUpdateCommand extends PlaceCreateCommand implements Validateable {
     Long id
     Long version
 
     static constraints = {
         id nullable: false
         version nullable: false
-        imageFile validator: ConstraintsUtils.imageFile()
     }
 }

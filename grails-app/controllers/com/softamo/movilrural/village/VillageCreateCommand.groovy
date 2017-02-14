@@ -1,9 +1,11 @@
-package com.softamo.movilrural
+package com.softamo.movilrural.village
 
+import com.softamo.movilrural.ConstraintsUtils
+import grails.compiler.GrailsCompileStatic
 import grails.validation.Validateable
 
+@GrailsCompileStatic
 class VillageCreateCommand implements Validateable {
-
     String name
     BigDecimal latitude
     BigDecimal longitude

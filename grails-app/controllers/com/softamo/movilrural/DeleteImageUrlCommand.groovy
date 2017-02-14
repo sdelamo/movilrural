@@ -1,10 +1,12 @@
 package com.softamo.movilrural
 
+import grails.compiler.GrailsCompileStatic
 import grails.validation.Validateable
 
+@GrailsCompileStatic
 class DeleteImageUrlCommand implements Validateable {
     Long id
-    Integer version
+    Long version
     String imageUrl
 
     static constraints = {

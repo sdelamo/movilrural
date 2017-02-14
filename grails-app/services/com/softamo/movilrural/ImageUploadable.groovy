@@ -11,7 +11,7 @@ trait ImageUploadable {
 
     abstract String pathWithMultipartFile(Long id, MultipartFile imageFile)
 
-    GormEntity uploadImageToS3(Long id, Integer version, MultipartFile file, Closure cls) {
+    GormEntity uploadImageToS3(Long id, Long version, MultipartFile file, Closure cls) {
 
         def path = pathWithMultipartFile(id, file)
 

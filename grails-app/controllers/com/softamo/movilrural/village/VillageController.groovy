@@ -1,10 +1,22 @@
-package com.softamo.movilrural
+package com.softamo.movilrural.village
 
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.http.HttpStatus.NO_CONTENT
 import static org.springframework.http.HttpStatus.NOT_FOUND
-import grails.transaction.Transactional
 
+import com.softamo.movilrural.DeleteFeaturedImageUrlCommand
+import com.softamo.movilrural.DeleteImageUrlCommand
+import com.softamo.movilrural.FeaturedImageCommand
+import com.softamo.movilrural.ImageCommand
+import com.softamo.movilrural.RetrieveGormEntityCommand
+import com.softamo.movilrural.UploadVillageFeaturedImageService
+import com.softamo.movilrural.Village
+import com.softamo.movilrural.VillageGormService
+
+import groovy.transform.CompileStatic
+import groovy.transform.TypeCheckingMode
+
+@CompileStatic
 class VillageController {
 
     static allowedMethods = [index: 'GET',
@@ -21,39 +33,35 @@ class VillageController {
 
     VillageGormService villageGormService
 
+    @CompileStatic(TypeCheckingMode.SKIP)
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def (l, total) = villageGormService.list(params)
         respond l, model: [villageCount: total]
     }
 
-    @Transactional(readOnly = true)
-    def show(Village village) {
-        respond village
+    def show(RetrieveGormEntityCommand cmd) {
+        respond villageGormService.findById(cmd)
     }
 
-    @SuppressWarnings('GrailsMassAssignment')
     @SuppressWarnings('FactoryMethodName')
-    @Transactional(readOnly = true)
     def create() {
-        respond new Village(params)
+        respond villageGormService.createVillage(params)
     }
 
-    @Transactional(readOnly = true)
-    def editFeaturedImage(Village village) {
-        respond village
+    def editFeaturedImage(RetrieveGormEntityCommand cmd) {
+        respond villageGormService.findById(cmd)
     }
 
-    @Transactional(readOnly = true)
-    def addImage(Village village) {
-        respond village
+    def addImage(RetrieveGormEntityCommand cmd) {
+        respond villageGormService.findById(cmd)
     }
 
-    @Transactional(readOnly = true)
-    def edit(Village village) {
-        respond village
+    def edit(RetrieveGormEntityCommand cmd) {
+        respond villageGormService.findById(cmd)
     }
 
+    @CompileStatic(TypeCheckingMode.SKIP)
     def uploadFeaturedImage(FeaturedImageCommand cmd) {
 
         if (cmd.hasErrors()) {
@@ -83,6 +91,7 @@ class VillageController {
         }
     }
 
+    @CompileStatic(TypeCheckingMode.SKIP)
     def uploadImage(ImageCommand cmd) {
 
         if (cmd.hasErrors()) {
@@ -112,6 +121,7 @@ class VillageController {
         }
     }
 
+    @CompileStatic(TypeCheckingMode.SKIP)
     def save(VillageCreateCommand cmd) {
         if (cmd == null) {
             notFound()
@@ -146,6 +156,7 @@ class VillageController {
         }
     }
 
+    @CompileStatic(TypeCheckingMode.SKIP)
     def update(VillageUpdateCommand cmd) {
         if (cmd == null) {
             notFound()
@@ -180,6 +191,7 @@ class VillageController {
         }
     }
 
+    @CompileStatic(TypeCheckingMode.SKIP)
     def delete() {
 
         Long villageId = params.long('id')
@@ -242,6 +254,7 @@ class VillageController {
         redirect(action: 'show', id: village.id)
     }
 
+    @CompileStatic(TypeCheckingMode.SKIP)
     protected void notFound() {
         request.withFormat {
             form multipartForm {

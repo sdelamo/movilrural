@@ -1,5 +1,6 @@
-package com.softamo.movilrural
+package com.softamo.movilrural.village
 
+import com.softamo.movilrural.Village
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 import spock.lang.Unroll

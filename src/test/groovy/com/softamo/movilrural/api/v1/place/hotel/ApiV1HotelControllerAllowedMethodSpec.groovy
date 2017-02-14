@@ -1,24 +1,23 @@
-package com.softamo.movilrural.api.v1
+package com.softamo.movilrural.api.v1.place.hotel
 
 import static javax.servlet.http.HttpServletResponse.SC_METHOD_NOT_ALLOWED
 import static javax.servlet.http.HttpServletResponse.SC_OK
 
 import grails.test.hibernate.HibernateSpec
-
 import grails.test.mixin.TestFor
-import spock.lang.Unroll
 import spock.lang.Ignore
+import spock.lang.Unroll
 
 @Ignore
-@TestFor(VillageController)
-class ApiV1VillageControllerAllowedMethodSpec extends HibernateSpec {
+@TestFor(HotelController)
+class ApiV1HotelControllerAllowedMethodSpec extends HibernateSpec {
 
     def setup() {
         controller.transactionManager = transactionManager
     }
 
     @Unroll
-    def "test VillageController.index does not accept #method requests"(String method) {
+    def "test HotelController.index does not accept #method requests"(String method) {
         when:
         request.method = method
         controller.index()
@@ -30,7 +29,7 @@ class ApiV1VillageControllerAllowedMethodSpec extends HibernateSpec {
         method << ['PATCH', 'DELETE', 'POST', 'PUT']
     }
 
-    def "test VillageController.index accepts POST requests"() {
+    def "test HotelController.index accepts POST requests"() {
         when:
         request.method = 'GET'
         controller.index()

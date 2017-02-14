@@ -1,12 +1,14 @@
 package com.softamo.movilrural
 
+import grails.compiler.GrailsCompileStatic
 import grails.validation.Validateable
 import org.springframework.web.multipart.MultipartFile
 
+@GrailsCompileStatic
 class FeaturedImageCommand implements Validateable {
     MultipartFile featuredImageFile
     Long id
-    Integer version
+    Long version
 
     static constraints = {
         id nullable: false
