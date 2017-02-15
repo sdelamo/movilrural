@@ -9,9 +9,7 @@
         <a href="#edit-hotel" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <g:render template="/village/menu"/>
             </ul>
         </div>
         <div id="edit-hotel" class="content scaffold-edit" role="main">
@@ -32,23 +30,11 @@
                     <f:field bean="hotel" property="name"/>
                     <f:field bean="hotel" property="latitude"/>
                     <f:field bean="hotel" property="longitude"/>
-                    <f:field bean="hotel" property="type"/>
                     <f:field bean="hotel" property="url"/>
                     <f:field bean="hotel" property="email"/>
                     <f:field bean="hotel" property="telephone"/>
                     <f:field bean="hotel" property="category"/>
-                    <f:field bean="hotel" property="streetAddress"/>
-                    <f:field bean="hotel" property="locality"/>
-                    <f:field bean="hotel" property="postalCode"/>
-                    <f:field bean="hotel" property="province"/>
-                    <f:field bean="hotel" property="region"/>
-                    <f:field bean="hotel" property="countryName"/>
-                    <f:field bean="hotel" property="toprural"/>
-                    <f:field bean="hotel" property="facebook"/>
-                    <f:field bean="hotel" property="twitter"/>
-                    <f:field bean="hotel" property="googlePlus"/>
-                    <f:field bean="hotel" property="minube"/>
-                    <f:field bean="hotel" property="tuenti"/>
+
                     <f:field bean="hotel" property="officialRanking"/>
                     <f:field bean="hotel" property="places"/>
 

@@ -30,25 +30,11 @@
                     <f:field bean="restaurant" property="name"/>
                     <f:field bean="restaurant" property="latitude"/>
                     <f:field bean="restaurant" property="longitude"/>
-                    <f:field bean="restaurant" property="type"/>
                     <f:field bean="restaurant" property="url"/>
                     <f:field bean="restaurant" property="email"/>
                     <f:field bean="restaurant" property="telephone"/>
                     <f:field bean="restaurant" property="category"/>
-                    <f:field bean="restaurant" property="streetAddress"/>
-                    <f:field bean="restaurant" property="locality"/>
-                    <f:field bean="restaurant" property="postalCode"/>
-                    <f:field bean="restaurant" property="province"/>
-                    <f:field bean="restaurant" property="region"/>
-                    <f:field bean="restaurant" property="countryName"/>
-                    <f:field bean="restaurant" property="toprural"/>
-                    <f:field bean="restaurant" property="facebook"/>
-                    <f:field bean="restaurant" property="twitter"/>
-                    <f:field bean="restaurant" property="googlePlus"/>
-                    <f:field bean="restaurant" property="minube"/>
-                    <f:field bean="restaurant" property="tuenti"/>
                     <f:field bean="restaurant" property="officialRanking"/>
-                    <f:field bean="restaurant" property="places"/>
 
                     <div class="fieldcontain required">
                         <trix:editor name="about" value="${village?.about}"/>

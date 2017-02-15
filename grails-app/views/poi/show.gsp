@@ -9,9 +9,7 @@
         <a href="#show-poi" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <g:render template="/village/menu"/>
             </ul>
         </div>
         <div id="show-poi" class="content scaffold-show" role="main" style="padding: 1em;">
@@ -22,62 +20,56 @@
             <g:message code="poi.latitude.label"/> <f:display bean="poi" property="latitude" /><br/>
             <g:message code="poi.longitude.label"/> <f:display bean="poi" property="longitude" /><br/>
 
-            <g:if test="${poi?.type}">
-                <g:message code="poi.type.label"/> <f:display bean="poi" property="type" /><br/>
-            </g:if>
             <g:if test="${poi?.url}">
-                <g:message code="poi.url.label"/> <f:display bean="poi" property="url" /><br/>
+                <b><g:message code="poi.url.label"/></b> <f:display bean="poi" property="url" /><br/>
             </g:if>
             <g:if test="${poi?.email}">
-                <g:message code="poi.email.label"/> <f:display bean="poi" property="email" /><br/>
+                <b><g:message code="poi.email.label"/></b> <f:display bean="poi" property="email" /><br/>
             </g:if>
             <g:if test="${poi?.telephone}">
-                <g:message code="poi.telephone.label"/> <f:display bean="poi" property="telephone" /><br/>
+                <b><g:message code="poi.telephone.label"/></b> <f:display bean="poi" property="telephone" /><br/>
             </g:if>
             <g:if test="${poi?.category}">
-                <g:message code="poi.category.label"/> <f:display bean="poi" property="category" /><br/>
+                <b><g:message code="poi.category.label"/></b> <f:display bean="poi" property="category" /><br/>
             </g:if>
-            <g:if test="${poi?.streetAddress}">
-                <g:message code="poi.streetAddress.label"/> <f:display bean="poi" property="streetAddress" /><br/>
+            <g:if test="${poi?.address?.streetAddress}">
+                <b><g:message code="poi.address.streetAddress.label"/></b> ${poi.address?.streetAddress}<br/>
             </g:if>
-            <g:if test="${poi?.locality}">
-                <g:message code="poi.locality.label"/> <f:display bean="poi" property="locality" /><br/>
+            <g:if test="${poi?.address?.locality}">
+                <b><g:message code="poi.address.locality.label"/></b> ${poi.address?.locality}<br/>
             </g:if>
-            <g:if test="${poi?.postalCode}">
-                <g:message code="poi.postalCode.label"/> <f:display bean="poi" property="postalCode" /><br/>
+            <g:if test="${poi?.address?.postalCode}">
+                <b><g:message code="poi.address.postalCode.label"/></b> ${poi.address?.postalCode}<br/>
             </g:if>
-            <g:if test="${poi?.province}">
-                <g:message code="poi.province.label"/> <f:display bean="poi" property="province" /><br/>
+            <g:if test="${poi?.address?.province}">
+                <b><g:message code="poi.address.province.label"/></b> ${poi.address?.province}<br/>
             </g:if>
-            <g:if test="${poi?.region}">
-                <g:message code="poi.region.label"/> <f:display bean="poi" property="region" /><br/>
+            <g:if test="${poi?.address?.region}">
+                <b><g:message code="poi.address.region.label"/></b> ${poi.address?.region}<br/>
             </g:if>
-            <g:if test="${poi?.countryName}">
-                <g:message code="poi.countryName.label"/> <f:display bean="poi" property="countryName" /><br/>
+            <g:if test="${poi?.address?.countryName}">
+                <b><g:message code="poi.address.countryName.label"/></b> ${poi.address?.countryName}<br/>
             </g:if>
-            <g:if test="${poi?.toprural}">
-                <g:message code="poi.toprural.label"/> <f:display bean="poi" property="toprural" /><br/>
+            <g:if test="${poi?.socialNetwork?.toprural}">
+                <b><g:message code="poi.socialNetwork.toprural.label"/></b> ${poi.socialNetwork?.toprural}<br/>
             </g:if>
-            <g:if test="${poi?.facebook}">
-                <g:message code="poi.facebook.label"/> <f:display bean="poi" property="facebook" /><br/>
+            <g:if test="${poi?.socialNetwork?.facebook}">
+                <b><g:message code="poi.socialNetwork.facebook.label"/></b> ${poi.socialNetwork?.facebook}<br/>
             </g:if>
-            <g:if test="${poi?.twitter}">
-                <g:message code="poi.twitter.label"/> <f:display bean="poi" property="twitter" /><br/>
+            <g:if test="${poi?.socialNetwork?.twitter}">
+                <b><g:message code="poi.socialNetwork.twitter.label"/></b> ${poi.socialNetwork?.twitter}<br/>
             </g:if>
-            <g:if test="${poi?.googlePlus}">
-                <g:message code="poi.googlePlus.label"/> <f:display bean="poi" property="googlePlus" /><br/>
+            <g:if test="${poi?.socialNetwork?.googlePlus}">
+                <b><g:message code="poi.socialNetwork.googlePlus.label"/></b> ${poi.socialNetwork?.googlePlus}<br/>
             </g:if>
-            <g:if test="${poi?.minube}">
-                <g:message code="poi.minube.label"/> <f:display bean="poi" property="minube" /><br/>
+            <g:if test="${poi?.socialNetwork?.minube}">
+                <b><g:message code="poi.socialNetwork.minube.label"/></b> ${poi.socialNetwork?.minube}<br/>
             </g:if>
-            <g:if test="${poi?.tuenti}">
-                <g:message code="poi.tuenti.label"/> <f:display bean="poi" property="tuenti" /><br/>
+            <g:if test="${poi?.socialNetwork?.tuenti}">
+                <b><g:message code="poi.socialNetwork.tuenti.label"/></b> ${poi.socialNetwork?.tuenti}<br/>
             </g:if>
             <g:if test="${poi?.officialRanking}">
-                <g:message code="poi.officialRanking.label"/> <f:display bean="poi" property="officialRanking" /><br/>
-            </g:if>
-            <g:if test="${poi?.places}">
-                <g:message code="poi.places.label"/> <f:display bean="poi" property="places" /><br/>
+                <b><g:message code="poi.officialRanking.label"/></b> <f:display bean="poi" property="officialRanking" /><br/>
             </g:if>
 
             <f:display property="about" bean="poi"/>
@@ -110,9 +102,11 @@
 
             <g:form resource="${this.poi}" method="DELETE">
                 <fieldset class="buttons">
+                    <g:link class="edit" action="edit" resource="${this.poi}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    <g:link class="edit" action="editSocialNetwork" resource="${this.poi}"><g:message code="poi.socialNetwork.edit.label" default="Edit Social Network" /></g:link>
+                    <g:link class="edit" action="editAddress" resource="${this.poi}"><g:message code="poi.address.edit.label" default="Edit Address" /></g:link>
                     <g:link class="edit" action="editFeaturedImage" resource="${this.poi}"><g:message code="poi.featuredImageUrl.edit.label" default="Edit Featured Image" /></g:link>
                     <g:link class="edit" action="addImage" resource="${this.poi}"><g:message code="poi.image.add.label" default="Add Image" /></g:link>
-                    <g:link class="edit" action="edit" resource="${this.poi}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>

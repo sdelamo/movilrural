@@ -5,6 +5,8 @@ import grails.validation.Validateable
 
 @GrailsCompileStatic
 class SocialNetworkCommand implements Validateable {
+    Long id
+    Long version
     String toprural
     String facebook
     String twitter
@@ -13,6 +15,8 @@ class SocialNetworkCommand implements Validateable {
     String tuenti
 
     static constraints = {
+        id nullable: false
+        version nullable: false
         toprural nullable: true
         facebook nullable: true
         twitter nullable: true

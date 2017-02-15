@@ -14,6 +14,51 @@ import spock.lang.Unroll
 class HotelControllerAllowedMethodsSpec extends Specification {
 
     @Unroll
+    def "test HotelController.editAddress does not accept #method requests"(String method) {
+        when:
+        request.method = method
+        controller.editAddress()
+
+        then:
+        response.status == SC_METHOD_NOT_ALLOWED
+
+        where:
+        method << ['PATCH', 'DELETE', 'POST', 'PUT']
+    }
+
+    def "test HotelController.editAddress accepts GET requests"() {
+        when:
+        controller.hotelGormService = Mock(HotelGormService)
+        request.method = 'GET'
+        controller.editAddress()
+
+        then:
+        response.status == SC_NOT_FOUND
+    }
+
+    @Unroll
+    def "test HotelController.editSocialNetwork does not accept #method requests"(String method) {
+        when:
+        request.method = method
+        controller.editSocialNetwork()
+
+        then:
+        response.status == SC_METHOD_NOT_ALLOWED
+
+        where:
+        method << ['PATCH', 'DELETE', 'POST', 'PUT']
+    }
+
+    def "test HotelController.editSocialNetwork accepts GET requests"() {
+        when:
+        controller.hotelGormService = Mock(HotelGormService)
+        request.method = 'GET'
+        controller.editSocialNetwork()
+
+        then:
+        response.status == SC_NOT_FOUND
+    }
+    @Unroll
     def "test HotelController.show does not accept #method requests"(String method) {
         when:
         request.method = method

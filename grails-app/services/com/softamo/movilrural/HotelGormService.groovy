@@ -1,7 +1,9 @@
 package com.softamo.movilrural
 
+import com.softamo.movilrural.place.AddressCommand
 import com.softamo.movilrural.place.PlaceCreateCommand
 import com.softamo.movilrural.place.PlaceUpdateCommand
+import com.softamo.movilrural.place.SocialNetworkCommand
 import grails.compiler.GrailsCompileStatic
 import grails.transaction.Transactional
 
@@ -95,6 +97,32 @@ class HotelGormService {
         }
         hotel.version = cmd.version
         hotel.removeFromImageUrls(cmd.imageUrl)
+        hotel.save()
+    }
+
+    @Transactional
+    Hotel updateSocialNetwork(SocialNetworkCommand cmd) {
+        Hotel hotel = Hotel.get(cmd.id)
+        if ( !hotel ) {
+            return null
+        }
+        hotel.version = cmd.version
+        def socialNetwork = PlaceService.createSocialNetwork(cmd)
+        socialNetwork.save()
+        hotel.socialNetwork = socialNetwork
+        hotel.save()
+    }
+
+    @Transactional
+    Hotel updateAddress(AddressCommand cmd) {
+        Hotel hotel = Hotel.get(cmd.id)
+        if ( !hotel ) {
+            return null
+        }
+        hotel.version = cmd.version
+        def address = PlaceService.createAddress(cmd)
+        address.save()
+        hotel.address = address
         hotel.save()
     }
 }

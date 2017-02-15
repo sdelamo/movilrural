@@ -1,7 +1,9 @@
 package com.softamo.movilrural
 
+import com.softamo.movilrural.place.AddressCommand
 import com.softamo.movilrural.place.PlaceCreateCommand
 import com.softamo.movilrural.place.PlaceUpdateCommand
+import com.softamo.movilrural.place.SocialNetworkCommand
 import grails.compiler.GrailsCompileStatic
 import grails.transaction.Transactional
 
@@ -95,6 +97,32 @@ class RestaurantGormService {
         }
         restaurant.version = cmd.version
         restaurant.removeFromImageUrls(cmd.imageUrl)
+        restaurant.save()
+    }
+
+    @Transactional
+    Restaurant updateSocialNetwork(SocialNetworkCommand cmd) {
+        Restaurant restaurant = Restaurant.get(cmd.id)
+        if ( !restaurant ) {
+            return null
+        }
+        restaurant.version = cmd.version
+        def socialNetwork = PlaceService.createSocialNetwork(cmd)
+        socialNetwork.save()
+        restaurant.socialNetwork = socialNetwork
+        restaurant.save()
+    }
+
+    @Transactional
+    Restaurant updateAddress(AddressCommand cmd) {
+        Restaurant restaurant = Restaurant.get(cmd.id)
+        if ( !restaurant ) {
+            return null
+        }
+        restaurant.version = cmd.version
+        def address = PlaceService.createAddress(cmd)
+        address.save()
+        restaurant.address = address
         restaurant.save()
     }
 }

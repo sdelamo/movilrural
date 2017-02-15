@@ -30,7 +30,6 @@
                     <f:field bean="poi" property="name"/>
                     <f:field bean="poi" property="latitude"/>
                     <f:field bean="poi" property="longitude"/>
-                    <f:field bean="poi" property="type"/>
                     <f:field bean="poi" property="url"/>
                     <f:field bean="poi" property="email"/>
                     <f:field bean="poi" property="telephone"/>

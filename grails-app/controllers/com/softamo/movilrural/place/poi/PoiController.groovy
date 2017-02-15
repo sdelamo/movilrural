@@ -5,6 +5,9 @@ import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.NO_CONTENT
 
+import com.softamo.movilrural.place.AddressCommand
+import com.softamo.movilrural.place.SocialNetworkCommand
+
 import com.softamo.movilrural.DeleteFeaturedImageUrlCommand
 import com.softamo.movilrural.DeleteImageUrlCommand
 import com.softamo.movilrural.FeaturedImageCommand
@@ -27,6 +30,8 @@ class PoiController {
                              create: 'GET',
                              editFeaturedImage: 'GET',
                              editAddress: 'GET',
+                             updateAddress: 'POST',
+                             updateSocialNetwork: 'POST',
                              editSocialNetwork: 'GET',
                              edit: 'GET',
                              uploadFeaturedImage: 'POST',
@@ -72,6 +77,64 @@ class PoiController {
 
     def edit(RetrieveGormEntityCommand cmd) {
         respond poiGormService.findById(cmd)
+    }
+
+    @CompileStatic(TypeCheckingMode.SKIP)
+    def updateAddress(AddressCommand cmd) {
+        if (cmd.hasErrors()) {
+            respond(cmd.errors, model: [poi: cmd], view: 'editAddress')
+            return
+        }
+
+        def poi = poiGormService.updateAddress(cmd)
+        if (poi == null) {
+            notFound()
+            return
+        }
+
+        if (poi.hasErrors()) {
+            respond(poi.errors, model: [poi: poi], view: 'editAddress')
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'poi.label',
+                                default: 'Poi'), poi.id])
+                redirect poi
+            }
+            '*' { respond poi, [status: OK] }
+        }
+    }
+
+    @CompileStatic(TypeCheckingMode.SKIP)
+    def updateSocialNetwork(SocialNetworkCommand cmd) {
+        if (cmd.hasErrors()) {
+            respond(cmd.errors, model: [poi: cmd], view: 'editSocialNetwork')
+            return
+        }
+
+        def poi = poiGormService.updateSocialNetwork(cmd)
+        if (poi == null) {
+            notFound()
+            return
+        }
+
+        if (poi.hasErrors()) {
+            respond(poi.errors, model: [poi: poi], view: 'editSocialNetwork')
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'poi.label',
+                                default: 'Poi'), poi.id])
+                redirect poi
+            }
+            '*' { respond poi, [status: OK] }
+        }
     }
 
     @CompileStatic(TypeCheckingMode.SKIP)

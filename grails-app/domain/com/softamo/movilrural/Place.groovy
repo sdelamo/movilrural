@@ -1,48 +1,7 @@
 package com.softamo.movilrural
 
-class Address {
-    String streetAddress
-    String locality
-    String postalCode
-    String province
-    String region
-    String countryName
-
-    static belongsTo = [place: Place]
-
-    static constraints = {
-        streetAddress nullable: true
-        locality nullable: true
-        postalCode nullable: true
-        province nullable: true
-        region nullable: true
-        countryName nullable: true
-    }
-}
-
-class SocialNetwork {
-    String toprural
-    String facebook
-    String twitter
-    String googlePlus
-    String minube
-    String tuenti
-
-    static belongsTo = [place: Place]
-
-    static constraints = {
-        toprural nullable: true
-        facebook nullable: true
-        twitter nullable: true
-        googlePlus nullable: true
-        minube nullable: true
-        tuenti nullable: true
-    }
-}
-
 class Place {
     String name
-    String type
     String url
     String email
     String telephone
@@ -62,7 +21,6 @@ class Place {
 
     static constraints = {
         name nullable: false, blank: false
-        type nullable: true
         url nullable: true
         email nullable: true
         telephone nullable: true
@@ -77,10 +35,8 @@ class Place {
         longitude nullable: false, validator: ConstraintsUtils.longitudeCustomValidator('longitude',
                 'range.toosmall',
                 'range.toobig')
-
         featuredImageUrl nullable: true
         imageUrls nullable: true
-
     }
 
     static mapping = {
@@ -89,18 +45,50 @@ class Place {
     }
 }
 
-class Poi extends Place {
+class Poi extends Place { }
 
-}
-
-class Restaurant extends Place {
-
-}
+class Restaurant extends Place { }
 
 class Hotel extends Place {
     Integer places
 
     static constraints = {
         places nullable: true
+    }
+}
+
+class Address {
+    String streetAddress
+    String locality
+    String postalCode
+    String province
+    String region
+    String countryName
+
+    static constraints = {
+        streetAddress nullable: true
+        locality nullable: true
+        postalCode nullable: true
+        province nullable: true
+        region nullable: true
+        countryName nullable: true
+    }
+}
+
+class SocialNetwork {
+    String toprural
+    String facebook
+    String twitter
+    String googlePlus
+    String minube
+    String tuenti
+
+    static constraints = {
+        toprural nullable: true
+        facebook nullable: true
+        twitter nullable: true
+        googlePlus nullable: true
+        minube nullable: true
+        tuenti nullable: true
     }
 }

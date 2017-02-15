@@ -9,9 +9,7 @@
         <a href="#show-restaurant" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <g:render template="/village/menu"/>
             </ul>
         </div>
         <div id="show-restaurant" class="content scaffold-show" role="main" style="padding: 1em;">
@@ -22,62 +20,56 @@
             <g:message code="restaurant.latitude.label"/> <f:display bean="restaurant" property="latitude" /><br/>
             <g:message code="restaurant.longitude.label"/> <f:display bean="restaurant" property="longitude" /><br/>
 
-            <g:if test="${restaurant?.type}">
-                <g:message code="restaurant.type.label"/> <f:display bean="restaurant" property="type" /><br/>
-            </g:if>
             <g:if test="${restaurant?.url}">
-                <g:message code="restaurant.url.label"/> <f:display bean="restaurant" property="url" /><br/>
+                <b><g:message code="restaurant.url.label"/></b>: <f:display bean="restaurant" property="url" /><br/>
             </g:if>
             <g:if test="${restaurant?.email}">
-                <g:message code="restaurant.email.label"/> <f:display bean="restaurant" property="email" /><br/>
+                <b><g:message code="restaurant.email.label"/></b>: <f:display bean="restaurant" property="email" /><br/>
             </g:if>
             <g:if test="${restaurant?.telephone}">
-                <g:message code="restaurant.telephone.label"/> <f:display bean="restaurant" property="telephone" /><br/>
+                <b><g:message code="restaurant.telephone.label"/></b>: <f:display bean="restaurant" property="telephone" /><br/>
             </g:if>
             <g:if test="${restaurant?.category}">
-                <g:message code="restaurant.category.label"/> <f:display bean="restaurant" property="category" /><br/>
+                <b><g:message code="restaurant.category.label"/></b>: <f:display bean="restaurant" property="category" /><br/>
             </g:if>
-            <g:if test="${restaurant?.streetAddress}">
-                <g:message code="restaurant.streetAddress.label"/> <f:display bean="restaurant" property="streetAddress" /><br/>
+            <g:if test="${restaurant?.address?.streetAddress}">
+                <b><g:message code="restaurant.address.streetAddress.label"/></b>: ${restaurant.address?.streetAddress}<br/>
             </g:if>
-            <g:if test="${restaurant?.locality}">
-                <g:message code="restaurant.locality.label"/> <f:display bean="restaurant" property="locality" /><br/>
+            <g:if test="${restaurant?.address?.locality}">
+                <b><g:message code="restaurant.address.locality.label"/></b>: ${restaurant.address?.locality}<br/>
             </g:if>
-            <g:if test="${restaurant?.postalCode}">
-                <g:message code="restaurant.postalCode.label"/> <f:display bean="restaurant" property="postalCode" /><br/>
+            <g:if test="${restaurant?.address?.postalCode}">
+                <b><g:message code="restaurant.address.postalCode.label"/></b>: ${restaurant.address?.postalCode}<br/>
             </g:if>
-            <g:if test="${restaurant?.province}">
-                <g:message code="restaurant.province.label"/> <f:display bean="restaurant" property="province" /><br/>
+            <g:if test="${restaurant?.address?.province}">
+                <b><g:message code="restaurant.address.province.label"/></b>: ${restaurant.address?.province}<br/>
             </g:if>
-            <g:if test="${restaurant?.region}">
-                <g:message code="restaurant.region.label"/> <f:display bean="restaurant" property="region" /><br/>
+            <g:if test="${restaurant?.address?.region}">
+                <b><g:message code="restaurant.address.region.label"/></b>: ${restaurant.address?.region}<br/>
             </g:if>
-            <g:if test="${restaurant?.countryName}">
-                <g:message code="restaurant.countryName.label"/> <f:display bean="restaurant" property="countryName" /><br/>
+            <g:if test="${restaurant?.address?.countryName}">
+                <b><g:message code="restaurant.address.countryName.label"/></b>: ${restaurant.address?.countryName}<br/>
             </g:if>
-            <g:if test="${restaurant?.toprural}">
-                <g:message code="restaurant.toprural.label"/> <f:display bean="restaurant" property="toprural" /><br/>
+            <g:if test="${restaurant?.socialNetwork?.toprural}">
+                <b><g:message code="restaurant.socialNetwork.toprural.label"/></b>: ${restaurant.socialNetwork?.toprural}<br/>
             </g:if>
-            <g:if test="${restaurant?.facebook}">
-                <g:message code="restaurant.facebook.label"/> <f:display bean="restaurant" property="facebook" /><br/>
+            <g:if test="${restaurant?.socialNetwork?.facebook}">
+                <b><g:message code="restaurant.socialNetwork.facebook.label"/></b>: ${restaurant.socialNetwork?.facebook}<br/>
             </g:if>
-            <g:if test="${restaurant?.twitter}">
-                <g:message code="restaurant.twitter.label"/> <f:display bean="restaurant" property="twitter" /><br/>
+            <g:if test="${restaurant?.socialNetwork?.twitter}">
+                <b><g:message code="restaurant.socialNetwork.twitter.label"/></b>: ${restaurant.socialNetwork?.twitter}<br/>
             </g:if>
-            <g:if test="${restaurant?.googlePlus}">
-                <g:message code="restaurant.googlePlus.label"/> <f:display bean="restaurant" property="googlePlus" /><br/>
+            <g:if test="${restaurant?.socialNetwork?.googlePlus}">
+                <b><g:message code="restaurant.socialNetwork.googlePlus.label"/></b>: ${restaurant.socialNetwork?.googlePlus}<br/>
             </g:if>
-            <g:if test="${restaurant?.minube}">
-                <g:message code="restaurant.minube.label"/> <f:display bean="restaurant" property="minube" /><br/>
+            <g:if test="${restaurant?.socialNetwork?.minube}">
+                <b><g:message code="restaurant.socialNetwork.minube.label"/></b>: ${restaurant.socialNetwork?.minube}<br/>
             </g:if>
-            <g:if test="${restaurant?.tuenti}">
-                <g:message code="restaurant.tuenti.label"/> <f:display bean="restaurant" property="tuenti" /><br/>
+            <g:if test="${restaurant?.socialNetwork?.tuenti}">
+                <b><g:message code="restaurant.socialNetwork.tuenti.label"/></b>: ${restaurant.socialNetwork?.tuenti}<br/>
             </g:if>
             <g:if test="${restaurant?.officialRanking}">
-                <g:message code="restaurant.officialRanking.label"/> <f:display bean="restaurant" property="officialRanking" /><br/>
-            </g:if>
-            <g:if test="${restaurant?.places}">
-                <g:message code="restaurant.places.label"/> <f:display bean="restaurant" property="places" /><br/>
+                <b><g:message code="restaurant.officialRanking.label"/></b>: <f:display bean="restaurant" property="officialRanking" /><br/>
             </g:if>
 
             <f:display property="about" bean="restaurant"/>
@@ -110,9 +102,11 @@
 
             <g:form resource="${this.restaurant}" method="DELETE">
                 <fieldset class="buttons">
+                    <g:link class="edit" action="edit" resource="${this.restaurant}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    <g:link class="edit" action="editSocialNetwork" resource="${this.restaurant}"><g:message code="restaurant.socialNetwork.edit.label" default="Edit Social Network" /></g:link>
+                    <g:link class="edit" action="editAddress" resource="${this.restaurant}"><g:message code="restaurant.address.edit.label" default="Edit Address" /></g:link>
                     <g:link class="edit" action="editFeaturedImage" resource="${this.restaurant}"><g:message code="restaurant.featuredImageUrl.edit.label" default="Edit Featured Image" /></g:link>
                     <g:link class="edit" action="addImage" resource="${this.restaurant}"><g:message code="restaurant.image.add.label" default="Add Image" /></g:link>
-                    <g:link class="edit" action="edit" resource="${this.restaurant}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>

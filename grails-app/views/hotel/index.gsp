@@ -10,7 +10,6 @@
         <div class="nav" role="navigation">
             <ul>
                 <g:render template="/village/menu"/>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
         <div id="list-hotel" class="content scaffold-list" role="main">
@@ -20,9 +19,18 @@
             </g:if>
             <f:table collection="${hotelList}" properties="['name']"/>
 
-            <div class="pagination">
-                <g:paginate total="${hotelCount ?: 0}" />
-            </div>
+            <b><g:message code="pagination.total" default="Total"/></b>: ${hotelCount ?: 0}<br/>
+            <g:if test="${(hotelCount ?: 0) > (hotelList?.size() ?: 0)}">
+                <div class="pagination">
+                    <g:paginate total="${hotelCount ?: 0}" />
+                </div>
+            </g:if>
+
+        </div>
+        <div class="nav" role="navigation">
+            <ul>
+                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+            </ul>
         </div>
     </body>
 </html>

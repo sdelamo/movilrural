@@ -1,7 +1,9 @@
 package com.softamo.movilrural
 
+import com.softamo.movilrural.place.AddressCommand
 import com.softamo.movilrural.place.PlaceCreateCommand
 import com.softamo.movilrural.place.PlaceUpdateCommand
+import com.softamo.movilrural.place.SocialNetworkCommand
 import grails.transaction.Transactional
 
 class PoiGormService {
@@ -93,6 +95,32 @@ class PoiGormService {
         }
         poi.version = cmd.version
         poi.removeFromImageUrls(cmd.imageUrl)
+        poi.save()
+    }
+
+    @Transactional
+    Poi updateSocialNetwork(SocialNetworkCommand cmd) {
+        Poi poi = Poi.get(cmd.id)
+        if ( !poi ) {
+            return null
+        }
+        poi.version = cmd.version
+        def socialNetwork = PlaceService.createSocialNetwork(cmd)
+        socialNetwork.save()
+        poi.socialNetwork = socialNetwork
+        poi.save()
+    }
+
+    @Transactional
+    Poi updateAddress(AddressCommand cmd) {
+        Poi poi = Poi.get(cmd.id)
+        if ( !poi ) {
+            return null
+        }
+        poi.version = cmd.version
+        def address = PlaceService.createAddress(cmd)
+        address.save()
+        poi.address = address
         poi.save()
     }
 }

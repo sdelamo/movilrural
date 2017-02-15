@@ -5,6 +5,8 @@ import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.NO_CONTENT
 
+import com.softamo.movilrural.place.AddressCommand
+import com.softamo.movilrural.place.SocialNetworkCommand
 import com.softamo.movilrural.DeleteFeaturedImageUrlCommand
 import com.softamo.movilrural.DeleteImageUrlCommand
 import com.softamo.movilrural.FeaturedImageCommand
@@ -25,6 +27,10 @@ class HotelController {
     static allowedMethods = [index: 'GET',
                              show: 'GET',
                              create: 'GET',
+                             editAddress: 'GET',
+                             editSocialNetwork: 'GET',
+                             updateAddress: 'POST',
+                             updateSocialNetwork: 'POST',
                              editFeaturedImage: 'GET',
                              edit: 'GET',
                              uploadFeaturedImage: 'POST',
@@ -52,6 +58,15 @@ class HotelController {
         respond hotelGormService.createHotel(params)
     }
 
+    def editAddress(RetrieveGormEntityCommand cmd) {
+        def hotel = hotelGormService.findById(cmd)
+        respond hotel
+    }
+
+    def editSocialNetwork(RetrieveGormEntityCommand cmd) {
+        respond hotelGormService.findById(cmd)
+    }
+
     def editFeaturedImage(RetrieveGormEntityCommand cmd) {
         respond hotelGormService.findById(cmd)
     }
@@ -62,6 +77,64 @@ class HotelController {
 
     def edit(RetrieveGormEntityCommand cmd) {
         respond hotelGormService.findById(cmd)
+    }
+
+    @CompileStatic(TypeCheckingMode.SKIP)
+    def updateAddress(AddressCommand cmd) {
+        if (cmd.hasErrors()) {
+            respond(cmd.errors, model: [hotel: cmd], view: 'editAddress')
+            return
+        }
+
+        def hotel = hotelGormService.updateAddress(cmd)
+        if (hotel == null) {
+            notFound()
+            return
+        }
+
+        if (hotel.hasErrors()) {
+            respond(hotel.errors, model: [hotel: hotel], view: 'editAddress')
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'hotel.label',
+                                default: 'Hotel'), hotel.id])
+                redirect hotel
+            }
+            '*' { respond hotel, [status: OK] }
+        }
+    }
+
+    @CompileStatic(TypeCheckingMode.SKIP)
+    def updateSocialNetwork(SocialNetworkCommand cmd) {
+        if (cmd.hasErrors()) {
+            respond(cmd.errors, model: [hotel: cmd], view: 'editSocialNetwork')
+            return
+        }
+
+        def hotel = hotelGormService.updateSocialNetwork(cmd)
+        if (hotel == null) {
+            notFound()
+            return
+        }
+
+        if (hotel.hasErrors()) {
+            respond(hotel.errors, model: [hotel: hotel], view: 'editSocialNetwork')
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'hotel.label',
+                                default: 'Hotel'), hotel.id])
+                redirect hotel
+            }
+            '*' { respond hotel, [status: OK] }
+        }
     }
 
     @CompileStatic(TypeCheckingMode.SKIP)

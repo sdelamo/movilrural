@@ -7,7 +7,6 @@ import grails.validation.Validateable
 @GrailsCompileStatic
 class PlaceCreateCommand implements Validateable {
     String name
-    String type
     String url
     String email
     String telephone
@@ -19,7 +18,6 @@ class PlaceCreateCommand implements Validateable {
 
     static constraints = {
         name nullable: false, blank: false
-        type nullable: true
         url nullable: true
         email nullable: true
         telephone nullable: true

@@ -5,6 +5,9 @@ import static org.springframework.http.HttpStatus.CREATED
 import static org.springframework.http.HttpStatus.NOT_FOUND
 import static org.springframework.http.HttpStatus.NO_CONTENT
 
+import com.softamo.movilrural.place.AddressCommand
+import com.softamo.movilrural.place.SocialNetworkCommand
+
 import com.softamo.movilrural.DeleteFeaturedImageUrlCommand
 import com.softamo.movilrural.DeleteImageUrlCommand
 import com.softamo.movilrural.FeaturedImageCommand
@@ -25,6 +28,10 @@ class RestaurantController {
     static allowedMethods = [index: 'GET',
                              show: 'GET',
                              create: 'GET',
+                             editAddress: 'GET',
+                             updateAddress: 'POST',
+                             updateSocialNetwork: 'POST',
+                             editSocialNetwork: 'GET',
                              editFeaturedImage: 'GET',
                              edit: 'GET',
                              uploadFeaturedImage: 'POST',
@@ -50,6 +57,72 @@ class RestaurantController {
     @SuppressWarnings('FactoryMethodName')
     def create() {
         respond restaurantGormService.createRestaurant(params)
+    }
+
+    def editAddress(RetrieveGormEntityCommand cmd) {
+        respond restaurantGormService.findById(cmd)
+    }
+
+    def editSocialNetwork(RetrieveGormEntityCommand cmd) {
+        respond restaurantGormService.findById(cmd)
+    }
+
+    @CompileStatic(TypeCheckingMode.SKIP)
+    def updateAddress(AddressCommand cmd) {
+        if (cmd.hasErrors()) {
+            respond(cmd.errors, model: [restaurant: cmd], view: 'editAddress')
+            return
+        }
+
+        def restaurant = restaurantGormService.updateAddress(cmd)
+        if (restaurant == null) {
+            notFound()
+            return
+        }
+
+        if (restaurant.hasErrors()) {
+            respond(restaurant.errors, model: [restaurant: restaurant], view: 'editAddress')
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'restaurant.label',
+                                default: 'Restaurant'), restaurant.id])
+                redirect restaurant
+            }
+            '*' { respond restaurant, [status: OK] }
+        }
+    }
+
+    @CompileStatic(TypeCheckingMode.SKIP)
+    def updateSocialNetwork(SocialNetworkCommand cmd) {
+        if (cmd.hasErrors()) {
+            respond(cmd.errors, model: [restaurant: cmd], view: 'editSocialNetwork')
+            return
+        }
+
+        def restaurant = restaurantGormService.updateSocialNetwork(cmd)
+        if (restaurant == null) {
+            notFound()
+            return
+        }
+
+        if (restaurant.hasErrors()) {
+            respond(restaurant.errors, model: [restaurant: restaurant], view: 'editSocialNetwork')
+            return
+        }
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'restaurant.label',
+                                default: 'Restaurant'), restaurant.id])
+                redirect restaurant
+            }
+            '*' { respond restaurant, [status: OK] }
+        }
     }
 
     def editFeaturedImage(RetrieveGormEntityCommand cmd) {
