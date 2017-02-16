@@ -90,12 +90,7 @@ cloudfoundry {
     }
 }
 
-
 bootRun {
-    systemProperties System.properties
-}
-
-integrationTest {
     systemProperties System.properties
 }
 
