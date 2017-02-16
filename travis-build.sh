@@ -5,12 +5,14 @@ export EXIT_STATUS=0
 
 ./gradlew test || EXIT_STATUS=$?
 
-if [[ $EXIT_STATUS -eq 0 ]] && [[ -n $TRAVIS_TAG ]] && [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+echo "Tag: $TRAVIS_TAG"
+
+if [[ $EXIT_STATUS -eq 0 && -n $TRAVIS_TAG && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     echo "Publishing to PWS" 
     
-    ./grailsw war
+    ./grailsw war || EXIT_STATUS=$?
 
-    ./gradlew -PcfUsername=$CF_USERNAME -PcfPassword=$CF_PASSWORD cfPush
+    ./gradlew -PcfUsername=$CF_USERNAME -PcfPassword=$CF_PASSWORD cfPush || EXIT_STATUS=$i
 fi
 
 exit $EXIT_STATUS
