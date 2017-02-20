@@ -6,7 +6,6 @@ export EXIT_STATUS=0
 ./gradlew test || EXIT_STATUS=$?
 
 echo "Tag: $TRAVIS_TAG"
-exit 0fi
 
 if [[ $EXIT_STATUS ]]; then
 
