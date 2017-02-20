@@ -20,10 +20,25 @@ spring:
 
 # Spring Actuator Endpoints are Disabled by Default
 endpoints:
-    enabled: false
+    enabled: true
     jmx:
         enabled: true
-
+environments:
+    development:
+        management:
+            info:
+                git:
+                    mode: full
+    test:
+        management:
+            info:
+                git:
+                    mode: simple
+    production:
+        management:
+            info:
+                git:
+                    mode: simple
 ---
 grails:
     mime:

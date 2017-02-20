@@ -24,6 +24,7 @@ grails {
 			interceptUrlMap = [
 					[pattern: '/', access: ['permitAll']],
 					[pattern: '/error', access: ['permitAll']],
+					[pattern: '/info', access: ['permitAll']],
 					[pattern: '/index', access: ['permitAll']],
 					[pattern: '/index.gsp', access: ['permitAll']],
 					[pattern: '/shutdown', access: ['permitAll']],

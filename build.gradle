@@ -3,12 +3,14 @@ buildscript {
         mavenCentral()
         mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.11.6"
         classpath "org.grails.plugins:hibernate5:6.0.7"
         classpath 'org.cloudfoundry:cf-gradle-plugin:1.1.2'
+        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17'
     }
 }
 
@@ -21,6 +23,7 @@ apply plugin: 'org.grails.grails-web'
 apply plugin: 'org.grails.grails-gsp'
 apply plugin: 'asset-pipeline'
 apply plugin: 'cloudfoundry'
+apply plugin: 'com.gorylenko.gradle-git-properties'
 apply from: 'gradle/codenarc.gradle'
 
 repositories {
@@ -61,6 +64,7 @@ dependencies {
     compile 'org.grails.plugins:grails-trix-editor:1.1'
     compile 'org.grails.plugins:aws-sdk-s3:2.1.5'
     compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
+    testCompile "org.grails:grails-datastore-rest-client"
 }
 
 bootRun {
