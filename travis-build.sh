@@ -9,7 +9,7 @@ echo "Tag: $TRAVIS_TAG"
 
 if [[ $EXIT_STATUS ]]; then
 
-    if [[ -n $TRAVIS_TAG ]] && [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+    if [[ -n $TRAVIS_TAG ]]; then
 
         echo "Publishing to PWS"
 
