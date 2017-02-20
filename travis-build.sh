@@ -7,10 +7,10 @@ export EXIT_STATUS=0
 
 echo "Tag: $TRAVIS_TAG"
 
-if [[ $EXIT_STATUS ]]; then
+if [[ $TRAVIS_BRANCH != master ]]; then exit 0
+if [[ $TRAVIS_PULL_REQUEST == 'true' ]]; then exit 0
 
-    if [[ $TRAVIS_BRANCH != master ]]; then exit 0;
-    if [[ $TRAVIS_PULL_REQUEST == 'true' ]]; then exit 0;
+if [[ $EXIT_STATUS ]]; then
 
     echo "Checking if tag set"
 
