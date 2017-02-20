@@ -7,8 +7,12 @@ export EXIT_STATUS=0
 
 echo "Tag: $TRAVIS_TAG"
 
-if [[ $TRAVIS_BRANCH != master ]]; then exit 0
-if [[ $TRAVIS_PULL_REQUEST == 'true' ]]; then exit 0
+if [[ $TRAVIS_BRANCH != master ]]; then
+    exit 0
+fi
+if [[ $TRAVIS_PULL_REQUEST == 'true' ]]; then
+    exit 0
+fi
 
 if [[ $EXIT_STATUS ]]; then
 
