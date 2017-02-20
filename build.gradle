@@ -21,7 +21,7 @@ apply plugin: 'org.grails.grails-web'
 apply plugin: 'org.grails.grails-gsp'
 apply plugin: 'asset-pipeline'
 apply plugin: 'cloudfoundry'
-apply plugin: 'codenarc'
+apply from: 'gradle/codenarc.gradle'
 
 repositories {
     jcenter()
@@ -97,18 +97,3 @@ bootRun {
 test {
     systemProperties System.properties
 }
-
-codenarc {
-    toolVersion = '0.25.2'
-}
-
-codenarcMain {
-    ignoreFailures false
-    configFile file("${rootProject.projectDir}/config/codenarc/codenarc.groovy")
-}
-
-codenarcTest {
-    ignoreFailures false
-    configFile file("${rootProject.projectDir}/config/codenarc/codenarcTest.groovy")
-}
-
