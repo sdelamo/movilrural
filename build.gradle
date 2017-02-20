@@ -14,7 +14,7 @@ buildscript {
     }
 }
 
-version "0.8.5"
+version "0.8.6"
 group "com.softamo"
 
 apply plugin: 'idea'
@@ -22,9 +22,9 @@ apply plugin: 'war'
 apply plugin: 'org.grails.grails-web'
 apply plugin: 'org.grails.grails-gsp'
 apply plugin: 'asset-pipeline'
-apply plugin: 'cloudfoundry'
 apply plugin: 'com.gorylenko.gradle-git-properties'
 apply from: 'gradle/codenarc.gradle'
+apply from: 'gradle/cloudfoundry.gradle'
 
 repositories {
     jcenter()
@@ -76,23 +76,6 @@ assets {
     minifyCss = true
 }
 
-cloudfoundry {
-    target = "https://api.run.pivotal.io"
-    application = 'movilrural-prod'
-    organization = "softamo.com"
-    space = "production"
-    file = file("build/libs/movilrural-${version}.war")
-    memory = 1024
-    instances = 1
-    buildpack = "java_buildpack"
-    services {
-        "movilruralmysql" {
-            label = "cleardb"
-            plan = "spark"
-            bind = true
-        }
-    }
-}
 
 bootRun {
     systemProperties System.properties

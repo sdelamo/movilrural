@@ -9,14 +9,17 @@ echo "Tag: $TRAVIS_TAG"
 
 if [[ $EXIT_STATUS ]]; then
 
-    if [[ -n $TRAVIS_TAG ]]; then
+    if [[ -n $TRAVIS_TAG ]] || [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
 
-        echo "Publishing to PWS"
+        if [[ -n $TRAVIS_TAG ]]; then
 
-        ./grailsw war || EXIT_STATUS=$?
+            echo "Publishing to PWS"
 
-        if [[ $EXIT_STATUS ]]; then
-            ./gradlew -PcfUsername=$CF_USERNAME -PcfPassword=$CF_PASSWORD cfPush || EXIT_STATUS=$i
+            ./grailsw war || EXIT_STATUS=$?
+
+            if [[ $EXIT_STATUS ]]; then
+                ./gradlew -PcfUsername=$CF_USERNAME -PcfPassword=$CF_PASSWORD cfPush || EXIT_STATUS=$i
+            fi
         fi
     fi
 fi
