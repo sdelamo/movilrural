@@ -30,7 +30,7 @@
                 <b><g:message code="restaurant.telephone.label"/></b>: <f:display bean="restaurant" property="telephone" /><br/>
             </g:if>
             <g:if test="${restaurant?.category}">
-                <b><g:message code="restaurant.category.label"/></b>: <f:display bean="restaurant" property="category" /><br/>
+                <b><g:message code="restaurant.category.label"/></b>: ${g.message(code: "restaurant.type.${restaurant?.category}")}<br/
             </g:if>
             <g:if test="${restaurant?.address?.streetAddress}">
                 <b><g:message code="restaurant.address.streetAddress.label"/></b>: ${restaurant.address?.streetAddress}<br/>

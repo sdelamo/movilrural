@@ -1,3 +1,4 @@
+<%@ page import="com.softamo.movilrural.places.restaurants.RestaurantType" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,8 +36,15 @@
                     <f:field bean="restaurant" property="url"/>
                     <f:field bean="restaurant" property="email"/>
                     <f:field bean="restaurant" property="telephone"/>
-                    <f:field bean="restaurant" property="category"/>
-                    <f:field bean="restaurant" property="officialRanking"/>
+                    <div class="fieldcontain">
+                        <label for="category"><g:message label="restaurant.category.label"/></label>
+
+                        <g:select id="category"
+                                  name='category'
+                                  value="${restaurant?.category}"
+                                  from="${RestaurantType.values()}"
+                                  valueMessagePrefix="restaurant.type"/>
+                    </div>                    <f:field bean="restaurant" property="officialRanking"/>
 
                     <div class="fieldcontain required">
                         <trix:editor name="about" value="${village?.about}"/>
