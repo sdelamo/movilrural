@@ -1,4 +1,5 @@
 <%@ page import="com.softamo.movilrural.places.hotels.HotelType" %>
+<%@ page import="com.softamo.movilrural.places.hotels.HotelCategory" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,7 +45,17 @@
                                   valueMessagePrefix="hotel.type"/>
                     </div>
 
-                    <f:field bean="hotel" property="officialRanking"/>
+
+                    <div class="fieldcontain">
+                        <label for="officialRanking"><g:message label="hotel.officialRanking.label"/></label>
+
+                        <g:select id="officialRanking"
+                                  name='officialRanking'
+                                  value="${hotel?.officialRanking}"
+                                  from="${HotelCategory.values()}"
+                                  valueMessagePrefix="hotel.category"/>
+                    </div>
+
                     <f:field bean="hotel" property="places"/>
 
                     <div class="fieldcontain required">

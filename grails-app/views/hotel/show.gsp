@@ -33,6 +33,11 @@
             <g:if test="${hotel?.category}">
                 <b><g:message code="hotel.category.label"/></b>: ${g.message(code: "hotel.type.${hotel?.category}")}<br/>
             </g:if>
+
+            <g:if test="${hotel?.officialRanking}">
+                <b><g:message code="hotel.officialRanking.label"/></b>: ${g.message(code: "hotel.category.${hotel?.officialRanking}")}<br/>
+            </g:if>
+
             <g:if test="${hotel?.address?.streetAddress}">
                 <b><g:message code="hotel.address.streetAddress.label"/></b>: ${hotel?.address?.streetAddress}<br/>
             </g:if>
