@@ -31,7 +31,7 @@
                 <b><g:message code="hotel.telephone.label"/></b>: <f:display bean="hotel" property="telephone" /><br/>
             </g:if>
             <g:if test="${hotel?.category}">
-                <b><g:message code="hotel.category.label"/></b>: <f:display bean="hotel" property="category" /><br/>
+                <b><g:message code="hotel.category.label"/></b>: ${g.message(code: "hotel.type.${hotel?.category}")}<br/>
             </g:if>
             <g:if test="${hotel?.address?.streetAddress}">
                 <b><g:message code="hotel.address.streetAddress.label"/></b>: ${hotel?.address?.streetAddress}<br/>
