@@ -6,6 +6,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'hotel.label', default: 'Hotel')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <asset:stylesheet src="trix/trix.css"/>
     </head>
     <body>
         <a href="#create-hotel" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -67,5 +68,6 @@
                 </fieldset>
             </g:form>
         </div>
+        <asset:javascript src="trix/trix.js"/>
     </body>
 </html>

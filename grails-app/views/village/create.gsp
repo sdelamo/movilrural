@@ -4,6 +4,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'village.label', default: 'Village')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <asset:stylesheet src="trix/trix.css"/>
     </head>
     <body>
         <a href="#create-village" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -39,5 +40,6 @@
                 </fieldset>
             </g:form>
         </div>
+        <asset:javascript src="trix/trix.js"/>
     </body>
 </html>
