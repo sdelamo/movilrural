@@ -6,7 +6,7 @@ cloudfoundry {
     organization = "softamo.com"
     space = "production"
     file = file("build/libs/movilrural-${version}.war")
-    memory = 1024
+    memory = 2048
     instances = 1
     buildpack = "java_buildpack"
     services {
