@@ -23,6 +23,8 @@ grails {
 			}
 			interceptUrlMap = [
 					[pattern: '/', access: ['permitAll']],
+					[pattern: '/tvml', access: ['permitAll']],
+					[pattern: '/tvml/show/*', access: ['permitAll']],
 					[pattern: '/error', access: ['permitAll']],
 					[pattern: '/info', access: ['permitAll']],
 					[pattern: '/index', access: ['permitAll']],
