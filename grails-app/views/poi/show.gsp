@@ -17,9 +17,12 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <g:message code="poi.latitude.label"/> <f:display bean="poi" property="latitude" /><br/>
-            <g:message code="poi.longitude.label"/> <f:display bean="poi" property="longitude" /><br/>
-
+            <g:if test="${poi?.latitude}">
+                <g:message code="poi.latitude.label"/> <f:display bean="poi" property="latitude" /><br/>
+            </g:if>
+            <g:if test="${poi?.longitude}">
+                <g:message code="poi.longitude.label"/> <f:display bean="poi" property="longitude" /><br/>
+            </g:if>
             <g:if test="${poi?.url}">
                 <b><g:message code="poi.url.label"/></b> <f:display bean="poi" property="url" /><br/>
             </g:if>
@@ -103,7 +106,6 @@
             <g:form resource="${this.poi}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.poi}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <g:link class="edit" action="editSocialNetwork" resource="${this.poi}"><g:message code="poi.socialNetwork.edit.label" default="Edit Social Network" /></g:link>
                     <g:link class="edit" action="editAddress" resource="${this.poi}"><g:message code="poi.address.edit.label" default="Edit Address" /></g:link>
                     <g:link class="edit" action="editFeaturedImage" resource="${this.poi}"><g:message code="poi.featuredImageUrl.edit.label" default="Edit Featured Image" /></g:link>
                     <g:link class="edit" action="addImage" resource="${this.poi}"><g:message code="poi.image.add.label" default="Add Image" /></g:link>

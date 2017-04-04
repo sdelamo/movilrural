@@ -12,8 +12,6 @@ import com.softamo.movilrural.DeleteFeaturedImageUrlCommand
 import com.softamo.movilrural.DeleteImageUrlCommand
 import com.softamo.movilrural.FeaturedImageCommand
 import com.softamo.movilrural.ImageCommand
-import com.softamo.movilrural.place.PlaceCreateCommand
-import com.softamo.movilrural.place.PlaceUpdateCommand
 import com.softamo.movilrural.Poi
 import com.softamo.movilrural.PoiGormService
 import com.softamo.movilrural.RetrieveGormEntityCommand
@@ -198,7 +196,7 @@ class PoiController {
     }
 
     @CompileStatic(TypeCheckingMode.SKIP)
-    def save(PlaceCreateCommand cmd) {
+    def save(PoiCreateCommand cmd) {
         if (cmd == null) {
             notFound()
             return
@@ -233,7 +231,7 @@ class PoiController {
     }
 
     @CompileStatic(TypeCheckingMode.SKIP)
-    def update(PlaceUpdateCommand cmd) {
+    def update(PoiUpdateCommand cmd) {
         if (cmd == null) {
             notFound()
             return

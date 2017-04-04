@@ -29,10 +29,10 @@ class Place {
         address nullable: true
         socialNetwork nullable: true
         officialRanking nullable: true
-        latitude nullable: false, validator: ConstraintsUtils.latitudeCustomValidator('latitude',
+        latitude nullable: true, validator: ConstraintsUtils.latitudeCustomValidator('latitude',
                 'range.toosmall',
                 'range.toobig')
-        longitude nullable: false, validator: ConstraintsUtils.longitudeCustomValidator('longitude',
+        longitude nullable: true, validator: ConstraintsUtils.longitudeCustomValidator('longitude',
                 'range.toosmall',
                 'range.toobig')
         featuredImageUrl nullable: true
@@ -45,7 +45,13 @@ class Place {
     }
 }
 
-class Poi extends Place { }
+class Poi extends Place {
+
+    static constraints = {
+        latitude nullable: true
+        longitude nullable: true
+    }
+}
 
 class Restaurant extends Place { }
 

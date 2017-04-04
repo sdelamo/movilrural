@@ -29,18 +29,11 @@
             <g:form action="save">
                 <fieldset class="form">
                     <f:field bean="poi" property="name"/>
-                    <f:field bean="poi" property="latitude"/>
-                    <f:field bean="poi" property="longitude"/>
                     <f:field bean="poi" property="url"/>
-                    <f:field bean="poi" property="email"/>
-                    <f:field bean="poi" property="telephone"/>
                     <f:field bean="poi" property="category"/>
-                    <f:field bean="poi" property="officialRanking"/>
-
                     <div class="fieldcontain required">
                         <trix:editor name="about" value="${village?.about}"/>
                     </div>
-
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
