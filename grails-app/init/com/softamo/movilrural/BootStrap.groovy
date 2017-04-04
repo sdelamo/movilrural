@@ -85,6 +85,7 @@ class BootStrap {
         }
     }
 
+    @SuppressWarnings(['LineLength', 'MethodSize'])
     List<Map> adelVideos() {
         [[
                  title: 'Románico Rural',
