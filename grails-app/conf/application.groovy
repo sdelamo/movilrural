@@ -10,9 +10,17 @@ grails {
 			securityConfigType = "InterceptUrlMap"
 			filterChain {
 				chainMap = [
-						[pattern: '/api/**',filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'],
-						[pattern: '/**', filters: 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter']
+						[pattern: '/api/guest/**', filters: 'anonymousAuthenticationFilter,restTokenValidationFilter,restExceptionTranslationFilter,filterInvocationInterceptor'],
+						[pattern: '/api/**',       filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter'],
+						[pattern: '/**',           filters: 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter']
 				]
+			}
+			rest {
+				token {
+					validation {
+						enableAnonymousAccess = true
+					}
+				}
 			}
 			userLookup {
 				userDomainClassName = 'com.softamo.movilrural.User'
@@ -106,24 +114,24 @@ grails {
 					[pattern: '/village/deleteFeaturedImageUrl',  access: ['ROLE_VILLAGE_EDITOR', 'ROLE_VILLAGE_MANAGER']],
 					[pattern: '/village/deleteImageUrl',  access: ['ROLE_VILLAGE_EDITOR', 'ROLE_VILLAGE_MANAGER']],
 					[pattern: '/village/delete/*',  access: ['ROLE_VILLAGE_EDITOR', 'ROLE_VILLAGE_MANAGER']],
-					[pattern: '/api/villages', httpMethod: 'GET', access: ['permitAll']],
+					[pattern: '/api/guest/villages', httpMethod: 'GET', access: ['permitAll']],
+					[pattern: '/api/guest/villages/*', httpMethod: 'GET', access: ['permitAll']],
+					[pattern: '/api/guest/pois', httpMethod: 'GET', access: ['permitAll']],
+					[pattern: '/api/guest/pois/*', httpMethod: 'GET', access: ['permitAll']],
+					[pattern: '/api/guest/restaurants', httpMethod: 'GET', access: ['permitAll']],
+					[pattern: '/api/guest/restaurants/*', httpMethod: 'GET', access: ['permitAll']],
+					[pattern: '/api/guest/hotels', httpMethod: 'GET', access: ['permitAll']],
+					[pattern: '/api/guest/hotels/*', httpMethod: 'GET', access: ['permitAll']],
 					[pattern: '/api/villages', httpMethod: 'POST', access: ['ROLE_VILLAGE_EDITOR', 'ROLE_VILLAGE_MANAGER']],
-					[pattern: '/api/villages/*', httpMethod: 'GET', access: ['permitAll']],
 					[pattern: '/api/villages/*', httpMethod: 'DELETE', access: ['ROLE_VILLAGE_EDITOR', 'ROLE_VILLAGE_MANAGER']],
 					[pattern: '/api/villages/*', httpMethod: 'PUT', access: ['ROLE_VILLAGE_EDITOR', 'ROLE_VILLAGE_MANAGER']],
-					[pattern: '/api/pois', httpMethod: 'GET', access: ['permitAll']],
 					[pattern: '/api/pois', httpMethod: 'POST', access: ['ROLE_POI_EDITOR', 'ROLE_POI_MANAGER']],
-					[pattern: '/api/pois/*', httpMethod: 'GET', access: ['permitAll']],
 					[pattern: '/api/pois/*', httpMethod: 'DELETE', access: ['ROLE_POI_EDITOR', 'ROLE_POI_MANAGER']],
 					[pattern: '/api/pois/*', httpMethod: 'PUT', access: ['ROLE_POI_EDITOR', 'ROLE_POI_MANAGER']],
-					[pattern: '/api/restaurants', httpMethod: 'GET', access: ['permitAll']],
 					[pattern: '/api/restaurants', httpMethod: 'POST', access: ['ROLE_RESTAURANT_EDITOR', 'ROLE_RESTAURANT_MANAGER']],
-					[pattern: '/api/restaurants/*', httpMethod: 'GET', access: ['permitAll']],
 					[pattern: '/api/restaurants/*', httpMethod: 'DELETE', access: ['ROLE_RESTAURANT_EDITOR', 'ROLE_RESTAURANT_MANAGER']],
 					[pattern: '/api/restaurants/*', httpMethod: 'PUT', access: ['ROLE_RESTAURANT_EDITOR', 'ROLE_VRESTAURANT_MANAGER']],
-					[pattern: '/api/hotels', httpMethod: 'GET', access: ['permitAll']],
 					[pattern: '/api/hotels', httpMethod: 'POST', access: ['ROLE_HOTEL_EDITOR', 'ROLE_HOTEL_MANAGER']],
-					[pattern: '/api/hotels/*', httpMethod: 'GET', access: ['permitAll']],
 					[pattern: '/api/hotels/*', httpMethod: 'DELETE', access: ['ROLE_HOTEL_EDITOR', 'ROLE_HOTEL_MANAGER']],
 					[pattern: '/api/hotels/*', httpMethod: 'PUT', access: ['ROLE_HOTEL_EDITOR', 'ROLE_HOTEL_MANAGER']]
 			]

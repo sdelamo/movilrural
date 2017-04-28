@@ -9,8 +9,8 @@ class UrlMappings {
             }
         }
 
-        "/api/${controller}s"(version: '1.0', namespace: 'v1', method: 'GET')
-        "/api/${controller}s/$id"(version: '1.0', action: 'show', namespace: 'v1', method: 'GET')
+        "/api/guest/${controller}s"(version: '1.0', namespace: 'v1', method: 'GET')
+        "/api/guest/${controller}s/$id"(version: '1.0', action: 'show', namespace: 'v1', method: 'GET')
         "/api/${controller}s/create"(version: '1.0', action: 'create', namespace: 'v1', method: 'GET')
         "/api/${controller}s"(action: 'save', version: '1.0', namespace: 'v1', method: 'POST')
         "/api/${controller}s/$id/edit"(action: 'edit', version: '1.0', namespace: 'v1', method: 'GET')
