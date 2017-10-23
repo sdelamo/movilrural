@@ -44,7 +44,7 @@ class HotelController {
 
     @CompileStatic(TypeCheckingMode.SKIP)
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 50, 100)
         def (l, total) = hotelGormService.list(params)
         respond l, model: [hotelCount: total]
     }
