@@ -6,7 +6,6 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <g:render template="/templates/mainmenu"/>
         <div class="nav" role="navigation">
             <ul>
                 <g:render template="/village/menu"/>

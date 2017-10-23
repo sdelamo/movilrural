@@ -6,7 +6,6 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-    <g:render template="/templates/mainmenu"/>
     <span class="cat-tags-links">
         <span class="cat-links">
             <g:link controller="village" action="index"><g:message code="village.index" default="Villages"/></g:link>
