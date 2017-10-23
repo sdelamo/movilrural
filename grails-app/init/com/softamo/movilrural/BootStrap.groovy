@@ -102,6 +102,46 @@ class BootStrap {
                  musicCredits: ['Apples + Orange']
 
          ],
+        
+                [
+                        title: 'Clip Sierra Norte',
+                        name: 'clip_sierra_carlos_morales',
+                        category: 'Certamen de Cortos Publicitarios Sierra Norte de Guadalajara',
+                        image: 'clip_sierra_carlos_morales.png',
+                        releaseYear: 2017,
+                        durationSeconds: 29,
+                        durationMinutes: 2,
+                        description: 'Segundo premio del Certamen de Cortos Publicitarios Sierra Norte de Guadalajara',
+                        videographers: ['Carlos Morales'],
+                        videoEditors: [],
+                        musicCredits: []
+                ],
+                [
+                        title: 'Serranía Limite Infinito',
+                        name: 'serrania_limite_infinito',
+                        category: 'Certamen de Cortos Publicitarios Sierra Norte de Guadalajara',
+                        image: 'serrania_limite_infinito.png',
+                        releaseYear: 2017,
+                        durationSeconds: 0,
+                        durationMinutes: 3,
+                        description: 'Primer premio del I Certamen de Cortos Publicitarios Sierra Norte de Guadalajara 2017',
+                        videographers: ['Alberto Molinero'],
+                        videoEditors: [],
+                        musicCredits: []
+                ],
+                [
+                        title: 'Spot sierra',
+                        name: 'spot_sierranorte_filar',
+                        category: 'Certamen de Cortos Publicitarios Sierra Norte de Guadalajara',
+                        image: 'spot_sierranorte_filar.png',
+                        releaseYear: 2017,
+                        durationSeconds: 7,
+                        durationMinutes: 1,
+                        description: 'Tercer premio del I Certamen de Cortos Publicitarios Sierra Norte de Guadalajara 2017',
+                        videographers: ['Lukasz Filar', 'Carlos Calvo'],
+                        videoEditors: [],
+                        musicCredits: []
+                ],
          [
                  title: 'Taller de arqueología experimental',
                  name: 'ArqueologiaExperimental',
