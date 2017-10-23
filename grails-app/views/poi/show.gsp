@@ -23,7 +23,7 @@
                 <g:message code="poi.longitude.label"/> <f:display bean="poi" property="longitude" /><br/>
             </g:if>
             <g:if test="${poi?.url}">
-                <b><g:message code="poi.url.label"/></b> <f:display bean="poi" property="url" /><br/>
+                <b><g:message code="poi.url.label"/></b> <a href="${poi?.url}"><f:display bean="poi" property="url" /></a><br/>
             </g:if>
             <g:if test="${poi?.email}">
                 <b><g:message code="poi.email.label"/></b> <f:display bean="poi" property="email" /><br/>

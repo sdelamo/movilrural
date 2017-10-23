@@ -23,7 +23,7 @@
             <b><g:message code="hotel.longitude.label"/></b>: <f:display bean="hotel" property="longitude" /><br/>
 
             <g:if test="${hotel?.url}">
-                <b><g:message code="hotel.url.label"/></b>: <f:display bean="hotel" property="url" /><br/>
+                <b><g:message code="hotel.url.label"/></b>: <a href="${hotel?.url}"><f:display bean="hotel" property="url" /></a><br/>
             </g:if>
             <g:if test="${hotel?.email}">
                 <b><g:message code="hotel.email.label"/></b>: <f:display bean="hotel" property="email" /><br/>
