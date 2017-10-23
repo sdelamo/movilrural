@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="adel" />
         <g:set var="entityName" value="${message(code: 'restaurant.label', default: 'Restaurant')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#show-restaurant" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <g:render template="/templates/mainmenu"/>
+        <sec:ifAnyGranted roles='ROLE_VILLAGE_EDITOR,ROLE_VILLAGE_MANAGER, ROLE_RESTAURANT_EDITOR,ROLE_RESTAURANT_MANAGER, ROLE_HOTEL_EDITOR,ROLE_HOTEL_MANAGER,ROLE_POI_EDITOR,ROLE_POI_MANAGER'>
         <div class="nav" role="navigation">
             <ul>
                 <g:render template="/village/menu"/>
             </ul>
         </div>
+        </sec:ifAnyGranted>
         <div id="show-restaurant" class="content scaffold-show" role="main" style="padding: 1em;">
             <h1><f:display bean="restaurant" property="name" /></h1>
             <g:if test="${flash.message}">
@@ -77,29 +79,33 @@
             <g:if test="${restaurant.featuredImageUrl}">
                 <h3><g:message code="restaurant.featuredImageUrl.label"/></h3>
                 <a href="${restaurant.featuredImageUrl}"><img src="${restaurant.featuredImageUrl}" alt="${restaurant.name}" width="400"/></a>
+                <sec:ifAnyGranted roles='ROLE_RESTAURANT_EDITOR,ROLE_RESTAURANT_MANAGER'>
                 <g:form method="DELETE" controller="restaurant" action="deleteFeaturedImageUrl">
                     <g:hiddenField name="id" value="${restaurant.id}"/>
                     <g:hiddenField name="version" value="${restaurant.version}"/>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </g:form>
+                </sec:ifAnyGranted>
             </g:if>
             <hr />
             <g:if test="${restaurant.imageUrls}">
                 <h3><g:message code="restaurant.imageUrls.label"/></h3>
-                <ul>
+                <ul style="list-style-type: none;">
                 <g:each var="imageUrl" in="${restaurant.imageUrls}">
                     <li><a href="${imageUrl}"><img src="${imageUrl}" alt="${restaurant.name}" width="400"/></a>
+                        <sec:ifAnyGranted roles='ROLE_RESTAURANT_EDITOR,ROLE_RESTAURANT_MANAGER'>
                         <g:form method="DELETE" controller="restaurant" action="deleteImageUrl">
                             <g:hiddenField name="id" value="${restaurant.id}"/>
                             <g:hiddenField name="version" value="${restaurant.version}"/>
                             <g:hiddenField name="imageUrl" value="${imageUrl}"/>
                             <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                         </g:form>
+                        </sec:ifAnyGranted>
                     </li>
                 </g:each>
                 </ul>
             </g:if>
-
+            <sec:ifAnyGranted roles='ROLE_RESTAURANT_EDITOR,ROLE_RESTAURANT_MANAGER'>
             <g:form resource="${this.restaurant}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.restaurant}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
@@ -110,6 +116,7 @@
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>
+            </sec:ifAnyGranted>
         </div>
     </body>
 </html>

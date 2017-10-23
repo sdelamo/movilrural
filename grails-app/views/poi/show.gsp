@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="adel" />
         <g:set var="entityName" value="${message(code: 'poi.label', default: 'Point of Interest')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#show-poi" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <g:render template="/templates/mainmenu"/>
         <div class="nav" role="navigation">
             <ul>
                 <g:render template="/village/menu"/>
@@ -80,11 +80,13 @@
             <g:if test="${poi.featuredImageUrl}">
                 <h3><g:message code="poi.featuredImageUrl.label"/></h3>
                 <a href="${poi.featuredImageUrl}"><img src="${poi.featuredImageUrl}" alt="${poi.name}" width="400"/></a>
+                <sec:ifAnyGranted roles='ROLE_VILLAGE_EDITOR,ROLE_VILLAGE_MANAGER'>
                 <g:form method="DELETE" controller="poi" action="deleteFeaturedImageUrl">
                     <g:hiddenField name="id" value="${poi.id}"/>
                     <g:hiddenField name="version" value="${poi.version}"/>
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </g:form>
+                </sec:ifAnyGranted>
             </g:if>
             <hr />
             <g:if test="${poi.imageUrls}">
@@ -92,17 +94,19 @@
                 <ul>
                 <g:each var="imageUrl" in="${poi.imageUrls}">
                     <li><a href="${imageUrl}"><img src="${imageUrl}" alt="${poi.name}" width="400"/></a>
+                    <sec:ifAnyGranted roles='ROLE_POI_EDITOR,ROLE_POI_MANAGER'>
                         <g:form method="DELETE" controller="poi" action="deleteImageUrl">
                             <g:hiddenField name="id" value="${poi.id}"/>
                             <g:hiddenField name="version" value="${poi.version}"/>
                             <g:hiddenField name="imageUrl" value="${imageUrl}"/>
                             <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                         </g:form>
+                    </sec:ifAnyGranted>
                     </li>
                 </g:each>
                 </ul>
             </g:if>
-
+<sec:ifAnyGranted roles='ROLE_POI_EDITOR,ROLE_POI_MANAGER'>
             <g:form resource="${this.poi}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.poi}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
@@ -112,6 +116,7 @@
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>
+</sec:ifAnyGranted>
         </div>
     </body>
 </html>

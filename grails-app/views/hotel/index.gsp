@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="main" />
+        <meta name="layout" content="adel" />
         <g:set var="entityName" value="${message(code: 'hotel.label', default: 'Hotel')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#list-hotel" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+        <g:render template="/templates/mainmenu"/>
+        <sec:ifAnyGranted roles='ROLE_VILLAGE_EDITOR,ROLE_VILLAGE_MANAGER, ROLE_RESTAURANT_EDITOR,ROLE_RESTAURANT_MANAGER, ROLE_HOTEL_EDITOR,ROLE_HOTEL_MANAGER,ROLE_POI_EDITOR,ROLE_POI_MANAGER'>
         <div class="nav" role="navigation">
             <ul>
                 <g:render template="/village/menu"/>
             </ul>
         </div>
+        </sec:ifAnyGranted>
         <div id="list-hotel" class="content scaffold-list" role="main">
             <h1><g:message code="hotel.list.label" default="Hotels" /></h1>
             <g:if test="${flash.message}">
