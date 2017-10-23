@@ -4,13 +4,14 @@ import static javax.servlet.http.HttpServletResponse.SC_METHOD_NOT_ALLOWED
 import static javax.servlet.http.HttpServletResponse.SC_OK
 
 import grails.test.hibernate.HibernateSpec
-import grails.test.mixin.TestFor
+import grails.testing.web.controllers.ControllerUnitTest
+
 import spock.lang.Ignore
 import spock.lang.Unroll
 
 @Ignore
-@TestFor(RestaurantController)
-class ApiV1RestaurantControllerAllowedMethodSpec extends HibernateSpec {
+class ApiV1RestaurantControllerAllowedMethodSpec extends HibernateSpec
+        implements ControllerUnitTest<RestaurantController> {
 
     def setup() {
         controller.transactionManager = transactionManager

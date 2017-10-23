@@ -3,15 +3,12 @@ package com.softamo.movilrural.place.hotel
 import static javax.servlet.http.HttpServletResponse.SC_METHOD_NOT_ALLOWED
 import static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND
 import static javax.servlet.http.HttpServletResponse.SC_OK
-
 import com.softamo.movilrural.HotelGormService
-
-import grails.test.mixin.TestFor
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 import spock.lang.Unroll
 
-@TestFor(HotelController)
-class HotelControllerAllowedMethodsSpec extends Specification {
+class HotelControllerAllowedMethodsSpec extends Specification implements ControllerUnitTest<HotelController> {
 
     @Unroll
     def "test HotelController.editAddress does not accept #method requests"(String method) {

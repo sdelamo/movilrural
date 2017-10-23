@@ -3,16 +3,12 @@ package com.softamo.movilrural.village
 import static javax.servlet.http.HttpServletResponse.SC_METHOD_NOT_ALLOWED
 import static javax.servlet.http.HttpServletResponse.SC_OK
 import static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND
-
 import com.softamo.movilrural.VillageGormService
-
 import spock.lang.Specification
-
-import grails.test.mixin.TestFor
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Unroll
 
-@TestFor(VillageController)
-class VillageControllerAllowedMethodsSpec extends Specification {
+class VillageControllerAllowedMethodsSpec extends Specification implements ControllerUnitTest<VillageController> {
 
     @Unroll
     def "test VillageController.show does not accept #method requests"(String method) {

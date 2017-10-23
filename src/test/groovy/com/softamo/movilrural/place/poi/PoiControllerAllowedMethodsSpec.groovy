@@ -3,15 +3,12 @@ package com.softamo.movilrural.place.poi
 import static javax.servlet.http.HttpServletResponse.SC_METHOD_NOT_ALLOWED
 import static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND
 import static javax.servlet.http.HttpServletResponse.SC_OK
-
 import com.softamo.movilrural.PoiGormService
-
-import grails.test.mixin.TestFor
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 import spock.lang.Unroll
 
-@TestFor(PoiController)
-class PoiControllerAllowedMethodsSpec extends Specification {
+class PoiControllerAllowedMethodsSpec extends Specification implements ControllerUnitTest<PoiController> {
 
     @Unroll
     def "test PoiController.show does not accept #method requests"(String method) {

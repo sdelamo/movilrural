@@ -2,15 +2,13 @@ package com.softamo.movilrural.api.v1.place.poi
 
 import static javax.servlet.http.HttpServletResponse.SC_METHOD_NOT_ALLOWED
 import static javax.servlet.http.HttpServletResponse.SC_OK
-
 import grails.test.hibernate.HibernateSpec
-import grails.test.mixin.TestFor
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Ignore
 import spock.lang.Unroll
 
 @Ignore
-@TestFor(PoiController)
-class ApiV1PoiControllerAllowedMethodSpec extends HibernateSpec {
+class ApiV1PoiControllerAllowedMethodSpec extends HibernateSpec implements ControllerUnitTest<PoiController> {
 
     def setup() {
         controller.transactionManager = transactionManager

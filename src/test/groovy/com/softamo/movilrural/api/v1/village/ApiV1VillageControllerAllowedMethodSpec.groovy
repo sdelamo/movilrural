@@ -4,14 +4,12 @@ import static javax.servlet.http.HttpServletResponse.SC_METHOD_NOT_ALLOWED
 import static javax.servlet.http.HttpServletResponse.SC_OK
 
 import grails.test.hibernate.HibernateSpec
-
-import grails.test.mixin.TestFor
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Unroll
 import spock.lang.Ignore
 
 @Ignore
-@TestFor(VillageController)
-class ApiV1VillageControllerAllowedMethodSpec extends HibernateSpec {
+class ApiV1VillageControllerAllowedMethodSpec extends HibernateSpec implements ControllerUnitTest<VillageController> {
 
     def setup() {
         controller.transactionManager = transactionManager

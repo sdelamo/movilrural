@@ -3,14 +3,12 @@ package com.softamo.movilrural.place.restaurant
 import static javax.servlet.http.HttpServletResponse.SC_METHOD_NOT_ALLOWED
 import static javax.servlet.http.HttpServletResponse.SC_NOT_FOUND
 import static javax.servlet.http.HttpServletResponse.SC_OK
-
 import com.softamo.movilrural.RestaurantGormService
-import grails.test.mixin.TestFor
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 import spock.lang.Unroll
 
-@TestFor(RestaurantController)
-class RestaurantControllerAllowedMethodsSpec extends Specification {
+class RestaurantControllerAllowedMethodsSpec extends Specification implements ControllerUnitTest<RestaurantController> {
 
     @Unroll
     def "test RestaurantController.editAddress does not accept #method requests"(String method) {

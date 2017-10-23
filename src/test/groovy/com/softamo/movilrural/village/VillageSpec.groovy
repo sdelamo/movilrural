@@ -1,12 +1,11 @@
 package com.softamo.movilrural.village
 
 import com.softamo.movilrural.Village
-import grails.test.mixin.TestFor
+import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 import spock.lang.Unroll
 
-@TestFor(Village)
-class VillageSpec extends Specification {
+class VillageSpec extends Specification implements DomainUnitTest<Village> {
 
     def "test name cannot be null"() {
         when:
