@@ -131,6 +131,10 @@
                         <li id="menu-item-1747" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1747"><a href="http://adelsierranorte.org/publicaciones/">Publicaciones</a></li>
                         <li id="menu-item-1759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1759"><a href="http://adelsierranorte.org/rutas/">Map y Rutas</a></li>
                         <li id="menu-item-1760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1760"><a href="http://adelsierranorte.org/videos/">Vídeos</a></li>
+                        <li id="menu-item-1839" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1839"><a href="http://turismo.adelsierranorte.org/village/index">Municipios</a></li>
+                        <li id="menu-item-1840" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1840"><a href="http://turismo.adelsierranorte.org/hotel/index">Hoteles</a></li>
+                        <li id="menu-item-1841" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1841"><a href="http://turismo.adelsierranorte.org/restaurant/index">Restaurantes</a></li>
+                        <li id="menu-item-1842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1842"><a href="http://turismo.adelsierranorte.org/poi/index">Puntos de Interés</a></li>
                     </ul></div>
                 </nav><!-- #site-navigation -->
             </div><!-- .wrap -->
