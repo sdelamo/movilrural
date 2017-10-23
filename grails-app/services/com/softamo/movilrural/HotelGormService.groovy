@@ -5,24 +5,25 @@ import com.softamo.movilrural.place.PlaceCreateCommand
 import com.softamo.movilrural.place.PlaceUpdateCommand
 import com.softamo.movilrural.place.SocialNetworkCommand
 import grails.compiler.GrailsCompileStatic
-import grails.transaction.Transactional
+import grails.gorm.transactions.ReadOnly
+import grails.gorm.transactions.Transactional
 
 @GrailsCompileStatic
 class HotelGormService {
 
     @SuppressWarnings('GrailsMassAssignment')
     @SuppressWarnings('FactoryMethodName')
-    @Transactional(readOnly = true)
+    @ReadOnly
     Hotel createHotel(Map params) {
         new Hotel(params)
     }
 
-    @Transactional(readOnly = true)
+    @ReadOnly
     Hotel findById(RetrieveGormEntityCommand cmd) {
         Hotel.get(cmd?.id)
     }
 
-    @Transactional(readOnly = true)
+    @ReadOnly
     List list(Map params) {
         [Hotel.list(params), Hotel.count()]
     }

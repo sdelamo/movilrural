@@ -1,11 +1,11 @@
 package org.adelsierranorte.tvmlkit
 
-import grails.transaction.Transactional
+import grails.gorm.transactions.ReadOnly
 import org.grails.plugins.tvml.MediaItem
 
 class TvmlService {
 
-    @Transactional(readOnly = true)
+    @ReadOnly
     Set<String> mediaItemCategories() {
         def c = MediaItem.createCriteria()
         c.listDistinct {
@@ -15,7 +15,7 @@ class TvmlService {
         } as Set<String>
     }
 
-    @Transactional(readOnly = true)
+    @ReadOnly
     Iterable<MediaItem> findAllMediaItemInTheSameCategory(String category) {
 
         def c = MediaItem.createCriteria()

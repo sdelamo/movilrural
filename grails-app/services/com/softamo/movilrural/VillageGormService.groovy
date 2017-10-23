@@ -3,24 +3,25 @@ package com.softamo.movilrural
 import com.softamo.movilrural.village.VillageCreateCommand
 import com.softamo.movilrural.village.VillageUpdateCommand
 import grails.compiler.GrailsCompileStatic
-import grails.transaction.Transactional
+import grails.gorm.transactions.ReadOnly
+import grails.gorm.transactions.Transactional
 
 @GrailsCompileStatic
 class VillageGormService {
 
     @SuppressWarnings('GrailsMassAssignment')
     @SuppressWarnings('FactoryMethodName')
-    @Transactional(readOnly = true)
+    @ReadOnly
     Village createVillage(Map params) {
         new Village(params)
     }
 
-    @Transactional(readOnly = true)
+    @ReadOnly
     Village findById(RetrieveGormEntityCommand cmd) {
         Village.get(cmd?.id)
     }
 
-    @Transactional(readOnly = true)
+    @ReadOnly
     List list(Map params) {
         [Village.list(params), Village.count()]
     }

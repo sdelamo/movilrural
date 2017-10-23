@@ -4,23 +4,24 @@ import com.softamo.movilrural.place.AddressCommand
 import com.softamo.movilrural.place.PlaceCreateCommand
 import com.softamo.movilrural.place.PlaceUpdateCommand
 import com.softamo.movilrural.place.SocialNetworkCommand
-import grails.transaction.Transactional
+import grails.gorm.transactions.ReadOnly
+import grails.gorm.transactions.Transactional
 
 class PoiGormService {
 
     @SuppressWarnings('GrailsMassAssignment')
     @SuppressWarnings('FactoryMethodName')
-    @Transactional(readOnly = true)
+    @ReadOnly
     Poi createPoi(Map params) {
         new Poi(params)
     }
 
-    @Transactional(readOnly = true)
+    @ReadOnly
     Poi findById(RetrieveGormEntityCommand cmd) {
         Poi.get(cmd?.id)
     }
 
-    @Transactional(readOnly = true)
+    @ReadOnly
     List list(Map params) {
         [Poi.list(params), Poi.count()]
     }
