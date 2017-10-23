@@ -30,4 +30,8 @@ trait ImageUploadable {
     void deleteFileFromServer(String key) {
         amazonS3Service.deleteFile(key)
     }
+
+    static String cleanupImageName(String imageUrl) {
+        imageUrl?.replaceAll(' ' , '_')?.toLowerCase()
+    }
 }
