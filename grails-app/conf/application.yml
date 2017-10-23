@@ -104,8 +104,6 @@ hibernate:
         queries: false
         use_second_level_cache: false
         use_query_cache: false
-        region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
-
 ---
 dataSource:
     pooled: true
@@ -113,7 +111,7 @@ dataSource:
     driverClassName: com.mysql.jdbc.Driver
     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     username: sa
-    password:
+    password: ''
 
 environments:
     development:
