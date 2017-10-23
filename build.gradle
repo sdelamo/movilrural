@@ -2,6 +2,8 @@ buildscript {
     repositories {
         mavenCentral()
         mavenLocal()
+        maven { url "https://oss.sonatype.org/content/repositories/releases" }
+        maven { url "https://repo.spring.io/release" }
         maven { url "https://repo.grails.org/grails/core" }
         maven { url "https://plugins.gradle.org/m2/" }
     }
@@ -9,7 +11,7 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
         classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
-        classpath "org.cloudfoundry:cf-gradle-plugin:$cloudFoundryGradlePluginVersion"
+        classpath "com.github.pivotalservices:ya-cf-app-gradle-plugin:$cfAppVersion"
         classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17'
         classpath "org.grails.plugins:views-gradle:$grailsViewsVersion"
     }

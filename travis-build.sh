@@ -15,10 +15,10 @@ if [[ $EXIT_STATUS ]]; then
 
             echo "Publishing to PWS"
 
-            ./grailsw war || EXIT_STATUS=$?
+            ./gradlew assemble || EXIT_STATUS=$?
 
             if [[ $EXIT_STATUS ]]; then
-                ./gradlew -PcfUsername=$CF_USERNAME -PcfPassword=$CF_PASSWORD cfPush || EXIT_STATUS=$i
+                ./gradlew cf-push || EXIT_STATUS=$i
             fi
         fi
     fi
