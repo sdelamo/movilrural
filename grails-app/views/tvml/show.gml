@@ -86,7 +86,7 @@ document {
                 }
                 description(allowsZooming: "true", moreLabel: "more", "${mediaItem.description}")
                 row {
-                    buttonLockup(onselect: "playMedia('${mediaItem.url}', 'video')", onplay: "playMedia('${mediaItem.url}', 'video')") {
+                    buttonLockup(type: 'play', onselect: "playMedia('${mediaItem.url}', 'video')", onplay: "playMedia('${mediaItem.url}', 'video')") {
                         badge(src: "resource://button-play")
                         title "Play"
                     }
