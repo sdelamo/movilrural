@@ -57,18 +57,24 @@ class BootStrap {
 
     void saveAdminUser() {
         if ( Environment.DEVELOPMENT == Environment.current) {
-            if ( !User.findByUsername('admin') ) {
-                def user = new User('admin', 'admin')
-                user.save failOnError: true
-                allAuthorities().each { String authority ->
-                    def role = Role.findByAuthority(authority)
-                    def userRole = new UserRole(user, role)
+            saveUser('admin', 'admin', allAuthorities())
+        }
+    }
+
+
+    void saveUser(String username, String password, List<String> authorities) {
+        if ( !User.findByUsername(username) ) {
+            def user = new User(username: username, password: password)
+            user.save failOnError: true
+            for ( String authority : authorities ) {
+                def role = Role.findByAuthority(authority)
+                if ( role ) {
+                    def userRole = new UserRole(user: user, role: role)
                     userRole.save failOnError: true
                 }
             }
         }
     }
-
     static List<String> allAuthorities() {
         def authorities = []
         authorities += VISITOR_AUTHORITIES
