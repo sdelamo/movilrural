@@ -117,7 +117,6 @@
                 <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Menú superior">
                     <button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
                         <svg class="icon icon-bars" aria-hidden="true" role="img"> <use href="#icon-bars" xlink:href="#icon-bars"></use> </svg><svg class="icon icon-close" aria-hidden="true" role="img"> <use href="#icon-close" xlink:href="#icon-close"></use> </svg>Menú	</button>
-
                     <div class="menu-menu-socios-container"><ul id="top-menu" class="menu"><li id="menu-item-1762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1762"><a href="http://adelsierranorte.org">Inicio</a></li>
                         <li id="menu-item-1784" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1784"><a href="http://adelsierranorte.org/contacto/">Contacto</a></li>
                         <li id="menu-item-859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-859"><a href="http://adelsierranorte.org/organizacion/">Organización</a></li>
@@ -129,12 +128,17 @@
                         <li id="menu-item-868" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-868"><a href="http://adelsierranorte.org/adjudicaciones/">Contratación y Adjudicaciones</a></li>
                         <li id="menu-item-1538" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1538"><a href="http://adelsierranorte.org/leader20142020/">Leader 2014-2020</a></li>
                         <li id="menu-item-1747" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1747"><a href="http://adelsierranorte.org/publicaciones/">Publicaciones</a></li>
-                        <li id="menu-item-1759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1759"><a href="http://adelsierranorte.org/rutas/">Map y Rutas</a></li>
-                        <li id="menu-item-1760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1760"><a href="http://adelsierranorte.org/videos/">Vídeos</a></li>
+                        <li id="menu-item-1759" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1420 current_page_item menu-item-1759"><a href="http://adelsierranorte.org/rutas/">Map y Rutas</a></li>
+                        <li id="menu-item-1923" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1923"><a href="http://adelsierranorte.org/aplicacion-turistica-adel-sierra-norte/">Aplicación Turística ADEL Sierra Norte</a></li>
                         <li id="menu-item-1839" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1839"><a href="http://turismo.adelsierranorte.org/village/index">Municipios</a></li>
                         <li id="menu-item-1840" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1840"><a href="http://turismo.adelsierranorte.org/hotel/index">Hoteles</a></li>
                         <li id="menu-item-1841" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1841"><a href="http://turismo.adelsierranorte.org/restaurant/index">Restaurantes</a></li>
                         <li id="menu-item-1842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1842"><a href="http://turismo.adelsierranorte.org/poi/index">Puntos de Interés</a></li>
+                        <li id="menu-item-1760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1760"><a href="http://adelsierranorte.org/videos/">Vídeos</a></li>
+                        <li id="menu-item-1920" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1920"><a href="http://adelsierranorte.org/pueblos-arquitectura-negra/">Pueblos Arquitectura Negra</a></li>
+                        <li id="menu-item-1854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1854"><a href="http://adelsierranorte.org/pueblos-arquitectura-negra/cicloturismo/">Cicloturismo</a></li>
+                        <li id="menu-item-1859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1859"><a href="http://adelsierranorte.org/pueblos-arquitectura-negra/senderismo/">Senderismo</a></li>
+                        <li id="menu-item-1865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1865"><a href="http://adelsierranorte.org/pueblos-arquitectura-negra/turismo-ornitologico/">Turismo Ornitológico</a></li>
                     </ul></div>
                 </nav><!-- #site-navigation -->
             </div><!-- .wrap -->
