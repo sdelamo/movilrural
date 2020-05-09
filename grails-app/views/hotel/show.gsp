@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="adel" />
+        <sec:ifNotLoggedIn>
+            <meta name="layout" content="adel" />
+        </sec:ifNotLoggedIn>
+        <sec:ifLoggedIn>
+            <meta name="layout" content="main" />
+        </sec:ifLoggedIn>
         <g:set var="entityName" value="${message(code: 'hotel.label', default: 'Hotel')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
