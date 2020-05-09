@@ -28,7 +28,6 @@ apply plugin: "com.bertramlabs.asset-pipeline"
 apply plugin: 'org.grails.grails-gsp'
 apply plugin:"org.grails.plugins.views-markup"
 apply plugin: 'com.gorylenko.gradle-git-properties'
-apply from: 'gradle/codenarc.gradle'
 apply from: 'gradle/cloudfoundry.gradle'
 
 repositories {
