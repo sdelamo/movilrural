@@ -92,10 +92,6 @@ grails:
                 scriptlets: html
                 taglib: none
                 staticparts: none
-endpoints:
-    jmx:
-        unique-names: true
-
 ---
 hibernate:
     cache:
