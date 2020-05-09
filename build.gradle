@@ -12,7 +12,6 @@ buildscript {
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
         classpath "org.grails.plugins:hibernate5:7.0.0"
         classpath "com.github.pivotalservices:ya-cf-app-gradle-plugin:$cfAppVersion"
-        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17'
         classpath "org.grails.plugins:views-gradle:$grailsViewsVersion"
     }
 }
@@ -27,7 +26,6 @@ apply plugin:"com.github.erdi.webdriver-binaries"
 apply plugin: "com.bertramlabs.asset-pipeline"
 apply plugin: 'org.grails.grails-gsp'
 apply plugin:"org.grails.plugins.views-markup"
-apply plugin: 'com.gorylenko.gradle-git-properties'
 apply from: 'gradle/cloudfoundry.gradle'
 
 repositories {
