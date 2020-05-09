@@ -91,7 +91,8 @@ dependencies {
     compile ("org.grails.plugins:spring-security-rest:$springSecurityRestVersion") {
         exclude group: 'org.grails.plugins', module:'spring-security-core'
     }
-    testCompile "org.grails:grails-datastore-rest-client"
+    testCompile "io.micronaut:micronaut-http-client"
+
     compile "org.grails.plugins:grails_plugin_tvml:$grailsPluginTvmlVersion"
 }
 

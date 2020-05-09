@@ -1,30 +1,47 @@
 package com.softamo.movilrural
 
-import grails.plugins.rest.client.RestBuilder
 import grails.testing.mixin.integration.Integration
-import grails.transaction.Rollback
+import grails.testing.spock.OnceBefore
+import io.micronaut.http.HttpRequest
+import io.micronaut.http.HttpResponse
+import io.micronaut.http.HttpStatus
+import io.micronaut.http.MediaType
+import io.micronaut.http.client.HttpClient
+import spock.lang.AutoCleanup
+import spock.lang.Shared
 import spock.lang.Specification
 
 @Integration
-@Rollback
 class InfoSpec extends Specification {
+
+    @Shared
+    @AutoCleanup
+    HttpClient client
+
+    @OnceBefore
+    void init() {
+        client  = HttpClient.create(new URL("http://localhost:$serverPort"))
+    }
 
     def "test git commit info appears in JSON"() {
         given:
-        RestBuilder rest = new RestBuilder()
-
+        HttpRequest request = HttpRequest.GET("/info")
+                .accept(MediaType.APPLICATION_JSON_TYPE)
         when:
-        def resp = rest.get("http://localhost:${serverPort}/info") {
-            header("Accept", "application/json")
-        }
+        HttpResponse<Map> resp = client.toBlocking().exchange(request, Map)
 
         then:
-        resp.statusCode.value() == 200
-        resp.json
-        resp.json.git
-        resp.json.git.commit
-        resp.json.git.commit.time
-        resp.json.git.commit.id
-        resp.json.git.branch
+        resp.status() == HttpStatus.OK
+
+        when:
+        Map json = resp.body()
+
+        then:
+        json
+        json.git
+        json.git.commit
+        json.git.commit.time
+        json.git.commit.id
+        json.git.branch
     }
 }

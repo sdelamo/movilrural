@@ -1,23 +1,35 @@
-package com.softamo.movilrural.api.hotel
+package com.softamo.movilrural.api.restaurant
 
-import grails.plugins.rest.client.RestBuilder
 import grails.testing.mixin.integration.Integration
+import grails.testing.spock.OnceBefore
+import io.micronaut.http.HttpRequest
+import io.micronaut.http.HttpResponse
+import io.micronaut.http.HttpStatus
+import io.micronaut.http.MediaType
+import io.micronaut.http.client.HttpClient
+import spock.lang.AutoCleanup
+import spock.lang.Shared
 import spock.lang.Specification
 
 @Integration
 class ApiRestaurantControllerIntegrationSpec extends Specification {
+    @Shared
+    @AutoCleanup
+    HttpClient client
+
+    @OnceBefore
+    void init() {
+        client  = HttpClient.create(new URL("http://localhost:$serverPort"))
+    }
 
     def "api/guest/restaurants is an anonymous accessible endpoint"() {
-        given:
-        RestBuilder rest = new RestBuilder()
-
         when:
-        def resp = rest.get("http://localhost:${serverPort}/api/guest/restaurants") {
-            accept('application/json')
-            header("Accept-Version", "1.0")
-        }
+        HttpRequest request = HttpRequest.GET("/api/guest/restaurants")
+                .header("Accept-Version", "1.0")
+                .accept(MediaType.APPLICATION_JSON_TYPE)
+        HttpResponse response = client.toBlocking().exchange(request)
 
         then:
-        resp.statusCode.value() == 200
+        response.status() == HttpStatus.OK
     }
 }
