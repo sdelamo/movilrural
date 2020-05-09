@@ -151,3 +151,32 @@ grails:
           s3:
             region: eu-west-1
             bucket: movilruraldev
+---
+environments:
+    development:
+        grails:
+            plugin:
+                springsecurity:
+                    rest:
+                        token:
+                            storage:
+                                jwt:
+                                    secret: 'pleaseChangeThisSecretForANewOne'
+    test:
+        grails:
+            plugin:
+                springsecurity:
+                    rest:
+                        token:
+                            storage:
+                                jwt:
+                                    secret: 'pleaseChangeThisSecretForANewOne'
+    production:
+        grails:
+            plugin:
+                springsecurity:
+                    rest:
+                        token:
+                            storage:
+                                jwt:
+                                    secret: '${JWT_SECRET}'
