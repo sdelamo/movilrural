@@ -13,11 +13,14 @@ class Role implements Serializable {
 
 	String authority
 
-	static constraints = {
-		authority nullable: false, blank: false, unique: true
+	Role() {
 	}
 
-	static mapping = {
-		cache true
+	Role(String authority) {
+		this.authority = authority
+	}
+
+	static constraints = {
+		authority nullable: false, blank: false, unique: true
 	}
 }
