@@ -93,7 +93,8 @@ dependencies {
     compile "org.grails.plugins:grails_plugin_tvml:$grailsPluginTvmlVersion"
 }
 
-List<String> jvmOpenModulesArgs = [
+
+List<String> jvmOpenModulesArgs = System.getenv("TRAVIS") != null ? [] : [
         "--add-opens=java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED",
         "--add-opens=java.base/java.io=ALL-UNNAMED",
         "--add-opens=java.base/java.lang=ALL-UNNAMED",
