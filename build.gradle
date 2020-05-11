@@ -29,10 +29,7 @@ apply plugin:"org.grails.plugins.views-markup"
 apply plugin: "com.github.pivotalservices.cf-app"
 
 repositories {
-    jcenter()
     maven { url "https://repo.grails.org/grails/core" }
-    maven { url 'http://dl.bintray.com/agorapulse/libs' }
-    maven { url 'http://dl.bintray.com/sdelamo/plugins' }
 }
 
 configurations {
