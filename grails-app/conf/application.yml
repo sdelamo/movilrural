@@ -3,9 +3,6 @@ grails:
     profile: web
     codegen:
         defaultPackage: com.softamo.movilrural
-    spring:
-        transactionManagement:
-            proxies: false
 info:
     app:
         name: '@info.app.name@'
