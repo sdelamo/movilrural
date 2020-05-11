@@ -61,7 +61,6 @@ dependencies {
     compile "org.grails.plugins:views-markup:$grailsViewsVersion"
     console "org.grails:grails-console"
     profile "org.grails.profiles:web"
-    runtime "org.glassfish.web:el-impl:2.1.2-b03"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:$assetPipelineVersion"
     runtime 'mysql:mysql-connector-java:8.0.20'
 
