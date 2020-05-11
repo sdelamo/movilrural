@@ -3,7 +3,7 @@ set -e
 
 export EXIT_STATUS=0
 
-./gradlew test || EXIT_STATUS=$?
+./gradlew check || EXIT_STATUS=$?
 
 echo "Tag: $TRAVIS_TAG"
 
