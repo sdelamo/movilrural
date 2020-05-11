@@ -30,7 +30,6 @@ apply plugin: "com.github.pivotalservices.cf-app"
 
 repositories {
     jcenter()
-    mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
     maven { url 'http://dl.bintray.com/agorapulse/libs' }
     maven { url 'http://dl.bintray.com/sdelamo/plugins' }
