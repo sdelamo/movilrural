@@ -94,6 +94,9 @@ dependencies {
     }
     testCompile "io.micronaut:micronaut-http-client"
 
+    testCompile "org.testcontainers:spock:$testContainersVersion"
+    testCompile "org.testcontainers:mysql:$testContainersVersion"
+
     compile "org.grails.plugins:grails_plugin_tvml:$grailsPluginTvmlVersion"
 }
 

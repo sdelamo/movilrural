@@ -1,5 +1,6 @@
 package com.softamo.movilrural.api.poi
 
+import com.softamo.movilrural.fixtures.MySQL
 import grails.testing.mixin.integration.Integration
 import grails.testing.spock.OnceBefore
 import io.micronaut.http.HttpRequest
@@ -13,6 +14,10 @@ import spock.lang.Specification
 
 @Integration
 class ApiPoiControllerIntegrationSpec extends Specification {
+
+    def setupSpec() {
+        MySQL.init()
+    }
 
     @Shared
     @AutoCleanup

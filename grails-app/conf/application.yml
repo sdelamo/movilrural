@@ -117,9 +117,6 @@ environments:
     test:
         dataSource:
             dbCreate: create-drop
-            url: jdbc:mysql://127.0.0.1:8889/movilrural_test
-            username: root
-            password: root
     production:
         dataSource:
             username: '${CLEARDB_USER}'

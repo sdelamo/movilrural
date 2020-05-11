@@ -1,5 +1,6 @@
 package com.softamo.movilrural.api.restaurant
 
+import com.softamo.movilrural.fixtures.MySQL
 import grails.testing.mixin.integration.Integration
 import grails.testing.spock.OnceBefore
 import io.micronaut.http.HttpRequest
@@ -13,6 +14,11 @@ import spock.lang.Specification
 
 @Integration
 class ApiRestaurantControllerIntegrationSpec extends Specification {
+
+    def setupSpec() {
+        MySQL.init()
+    }
+
     @Shared
     @AutoCleanup
     HttpClient client
