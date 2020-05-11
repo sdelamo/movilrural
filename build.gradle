@@ -197,7 +197,6 @@ cfConfig {
     org = "softamo.com"
     space = "production"
     filePath = "$buildDir/libs/movilrural-${version}.war"
-    routes = ['plugins.grails.org']
     buildpack = "https://github.com/cloudfoundry/java-buildpack.git"
     environment = [:]
     services  = ["movilrural-cleardb"]
