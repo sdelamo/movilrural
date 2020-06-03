@@ -86,8 +86,7 @@
             <g:if test="${hotel?.places}">
                 <g:message code="hotel.places.label"/> <f:display bean="hotel" property="places" /><br/>
             </g:if>
-
-            <f:display property="about" bean="hotel"/>
+            ${hotel.about.encodeAsRaw()}
             <hr />
             <g:if test="${hotel.featuredImageUrl}">
                 <h3><g:message code="hotel.featuredImageUrl.label"/></h3>

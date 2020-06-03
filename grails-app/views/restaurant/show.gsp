@@ -78,7 +78,7 @@
                 <b><g:message code="restaurant.officialRanking.label"/></b>: <f:display bean="restaurant" property="officialRanking" /><br/>
             </g:if>
 
-            <f:display property="about" bean="restaurant"/>
+            ${restaurant.about.encodeAsRaw()}
             <hr />
             <g:if test="${restaurant.featuredImageUrl}">
                 <h3><g:message code="restaurant.featuredImageUrl.label"/></h3>

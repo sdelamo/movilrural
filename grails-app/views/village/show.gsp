@@ -33,7 +33,7 @@
             </g:if>
             <g:message code="village.latitude.label"/> <f:display bean="village" property="latitude" /><br/>
             <g:message code="village.longitude.label"/> <f:display bean="village" property="longitude" /><br/>
-            <f:display property="about" bean="village"/>
+            ${village.about.encodeAsRaw()}
             <hr />
             <g:if test="${village.featuredImageUrl}">
                 <h3><g:message code="village.featuredImageUrl.label"/></h3>

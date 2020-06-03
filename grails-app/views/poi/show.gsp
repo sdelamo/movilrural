@@ -79,7 +79,7 @@
                 <b><g:message code="poi.officialRanking.label"/></b> <f:display bean="poi" property="officialRanking" /><br/>
             </g:if>
 
-            <f:display property="about" bean="poi"/>
+            ${poi.about.encodeAsRaw()}
             <hr />
             <g:if test="${poi.featuredImageUrl}">
                 <h3><g:message code="poi.featuredImageUrl.label"/></h3>
