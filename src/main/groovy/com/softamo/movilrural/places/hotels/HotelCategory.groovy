@@ -11,6 +11,7 @@ enum HotelCategory {
     TWO_STAR,
     THREE_STAR,
     FOUR_STAR,
+    FIVE_STAR,
     ONE_KEY,
     TWO_KEY,
     THREE_KEY
