@@ -30,6 +30,7 @@ grails {
 				className = 'com.softamo.movilrural.Role'
 			}
 			interceptUrlMap = [
+					[pattern: '/health', access: ['permitAll']],
 					[pattern: '/', access: ['permitAll']],
 					[pattern: '/tvml', access: ['permitAll']],
 					[pattern: '/tvml/show/*', access: ['permitAll']],

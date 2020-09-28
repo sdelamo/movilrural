@@ -25,12 +25,14 @@ spring:
                 - '**/*.gson'
                 - 'logback.groovy'
                 - '*.properties'
+
 management:
     endpoint:
         health:
             show-details: when_authorized
     endpoints:
         web:
+            base-path: '/'
             exposure:
                 include: health,info
         enabled-by-default: true
